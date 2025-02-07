@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: lightgrey;
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    align-items: center;
+}
+
+header a {
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.sect0 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.sect0 .detail-form {
+    padding: 100px;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(15px);
+    border: 1px solid #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 25px 50px #333;
+    align-items: center;
+}
+
+.sect0 .detail-form .input {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    transition: 0.9s;
+}
+
+.sect0 .detail-form .input input {
+    width: 100%;
+    padding: 7px 10px;
+    outline: none;
+    font-size: 1.25rem;
+    color: #8f2c24;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 8px;
+}
+
+.sect0 .detail-form h3 {
+    width: 100%;
+    text-align: center;
+    font-size: 2.5rem;
+    color: #8f2c24;
+    margin-bottom: 10px;
+}
+
+.sect0 .detail-form .input label {
+    width: 250px;
+    color: black;
+    font-weight: bold;
+}
+
+.sect0 .detail-form .input input ::placeholder {
+    color: #8f2c24;
+}
+
+#signInbtn {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    background-color: #8f2c24;
+    color: aliceblue;
+    font-size: 1.25rem;
+    transition: background-color 0.9s, transform 0.3s;
+}
+
+#signInbtn:hover {
+    background-color: #d64c42;
+    transform: scale(1.05);
+}

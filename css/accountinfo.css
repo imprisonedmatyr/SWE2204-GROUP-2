@@ -1,0 +1,97 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: lightgrey;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.sect0 {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cont {
+  padding: 60px;
+  width: 400px;
+  border-radius: 20px;
+}
+
+.dets {
+  min-width: 200px;
+  font-size: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.dets label {
+  font-weight: bold;
+}
+
+.settings {
+  margin-top: 20px;
+}
+a {
+  text-decoration: none;
+}
+
+/* Media Queries */
+
+/* Tablet devices */
+@media (max-width: 768px) {
+  .cont {
+    padding: 40px;
+    width: 90%; /* Reduce width on smaller screens */
+  }
+
+  .sect0 {
+    padding: 15px;
+    max-width: 90%;
+  }
+
+  .dets {
+    font-size: 1.1rem; /* Adjust font size for readability */
+  }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+  .cont {
+    padding: 20px;
+    width: 100%; /* Full width on mobile */
+  }
+
+  .sect0 {
+    padding: 10px;
+    max-width: 100%;
+    margin: 10px;
+  }
+
+  .dets {
+    font-size: 1rem;
+    flex-direction: column; /* Stack labels and values vertically */
+    align-items: flex-start;
+  }
+
+  .dets label {
+    margin-bottom: 5px;
+  }
+}

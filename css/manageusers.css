@@ -1,0 +1,70 @@
+body, html {
+    background-color: var(--main-bg-color);
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: monospace;
+}
+
+header {
+    background-color: var(--header-bg-color);
+    padding: 10px;
+}
+
+header a {
+    color: var(--header-text-color);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.users-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.add-user-btn {
+    background-color: var(--header-bg-color);
+    color: aliceblue;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.users-table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.users-table th, .users-table td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+.users-table th {
+    background-color: var(--header-bg-color);
+    color: black;
+}
+
+.users-table tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: lightblue;
+    border: none;
+}
+
+.delete-btn {
+    background-color: lightcoral;
+    border: none;
+}

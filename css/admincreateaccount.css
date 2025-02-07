@@ -1,0 +1,149 @@
+:root {
+    --main-font: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    --primary-color: #8f2c24;
+    --background-color: lightgrey;
+    --button-color: #8f2c24;
+    --hover-color: #d64c42;
+    --text-color: aliceblue;
+    --text2-color: #333;
+}
+
+* {
+    font-size: 1.15rem;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--main-font);
+    background-image: url(/img/kazuend-DHk_mju83z0-unsplash.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+}
+
+a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+    width: 100%;
+    backdrop-filter: blur(15px);
+}
+
+.detail-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--text-color);
+    border-radius: 20px;
+    backdrop-filter: blur(25px);
+    width: 900px;
+    min-height: 700px;
+}
+
+.detail-form p {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    width: 100%;
+}
+
+.init {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4px;
+    width: 100%;
+}
+
+.init label {
+    min-width: 230px;
+    color: black;
+    font-weight: bold;
+    padding: 7px 10px;
+}
+
+.init input {
+    width: 100%;
+    padding: 7px 10px;
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 8px;
+}
+
+.init input ::placeholder {
+    color: var(--primary-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.init1{
+    display: grid;
+    justify-content: center;
+    gap: 20px;
+}
+
+.init1 input {
+    width: 100%;
+    background-color: var(--button-color);
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 50px;
+    color: var(--text-color);
+    transition: 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.init1 input:hover {
+    background-color: var(--hover-color);
+}
+
+.init1 a{
+    color: var(--text2-color);
+    font-size: medium;
+}
+/* Responsive styles */
+@media (max-width: 768px) {
+    .detail-form {
+        width: 90%; /* Full width on smaller screens */
+        padding: 20px; /* Adjust padding */
+        min-height: auto; /* Remove minimum height */
+        margin-top: 20px; /* Add some margin at the top */
+    }
+ 
+    .detail-form p {
+        font-size: 2rem; /* Smaller title size */
+        margin-bottom: 20px; /* Adjust margin */
+    }
+ }
+ 
+ @media (max-width: 480px) {
+    .detail-form p {
+        font-size: 1.5rem; /* Even smaller title size */
+        margin-bottom: 15px; /* Adjust margin */
+    }
+ 
+    .init label {
+        min-width: auto; /* Remove fixed width on labels */
+        font-size: 1rem; /* Smaller label font size */
+    }
+ 
+    .init input {
+        font-size: 1rem; /* Smaller input font size */
+        padding: 5px; /* Adjust padding */
+        margin-bottom: 5px; /* Adjust spacing between inputs */
+    }
+ }

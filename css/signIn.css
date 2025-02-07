@@ -1,0 +1,205 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+}
+
+.header .logo {
+  text-decoration: none;
+  color: #ff6f61;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.user-icon {
+  position: relative;
+  cursor: pointer;
+}
+
+.user-circle {
+  width: 35px;
+  height: 35px;
+  background-color: #444;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ff6f61;
+  font-weight: bold;
+}
+
+.dropdown {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  display: none;
+  position: absolute;
+  right: 0;
+  background: white;
+  color: black;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.dropdown a {
+  display: block;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.dropdown a:hover {
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+img {
+  max-width: 1.92rem;
+}
+
+.user-icon.active .dropdown {
+  display: block;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.signin .content {
+  padding: 60px;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(15px);
+  border: 1px solid #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 20px;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 25px 50px rgba(0, 0, 0);
+}
+
+.signin .content h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #8f2c24;
+  margin-top: -25px;
+  margin-bottom: 40px;
+}
+
+.signin .content .form .links {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+}
+
+.signin .content .form .inputbox {
+  margin-bottom: 30px;
+}
+
+.signin .content .form .inputbox input {
+  width: 100%;
+  padding: 15px 20px;
+  outline: none;
+  font-size: 1.25rem;
+  color: #8f2c24;
+  border-radius: 5px;
+  border: none;
+}
+
+.signin .content .form .inputbox input ::placeholder {
+  color: #8f2c24;
+}
+
+.signin .content .form .inputbox #btn {
+  border: none;
+  outline: none;
+  border-radius: 20rem;
+  background: #8f2c24;
+  color: aliceblue;
+  cursor: pointer;
+  font-size: 1.25rem;
+  transition: background 0.5s;
+}
+
+.signin .content .form .inputbox #btn:hover {
+  background: #d64c42;
+}
+
+.signin .content .form .links a {
+  font-size: 1.25rem;
+  color: #8f2c24;
+  text-decoration: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .signin .content {
+      width: 90%; /* Full width on smaller screens */
+      padding: 30px; /* Reduced padding */
+  }
+
+  .signin .content h2 {
+      font-size: 2rem; /* Smaller heading on mobile */
+      margin-bottom: 20px; /* Adjust margin */
+  }
+
+  .signin .content .form .inputbox input {
+      font-size: 1rem; /* Smaller input font size */
+      padding: 10px; /* Adjust padding */
+  }
+
+  .signin .content .form .inputbox #btn {
+      font-size: 1rem; /* Smaller button font size */
+      padding: 10px; /* Adjust padding */
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+      flex-direction: column; /* Stack header elements vertically on very small screens */
+      align-items: flex-start; /* Align items to the start */
+      padding: 10px; /* Adjust padding */
+  }
+
+  .header .logo {
+      font-size: 20px; /* Smaller logo font size */
+  }
+
+  .user-circle {
+      width: 30px; /* Smaller user icon */
+      height: 30px; /* Smaller user icon */
+  }
+
+  .signin .content h2 {
+      font-size: 1.5rem; /* Even smaller heading on very small screens */
+  }
+}
