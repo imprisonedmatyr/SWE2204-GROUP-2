@@ -11,6 +11,7 @@ if (!isset($_SESSION['username'])) {
 }
 
 try {
+    
     $pst = $connection->prepare('SELECT * FROM users WHERE username = ?');
     $pst->bind_param('s', $_SESSION['username']);
     $pst->execute();
