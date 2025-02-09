@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/VL/css/header.css?v=<?php time(); ?>">
-    <link rel="icon" href="/VL/img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/header.css?v=<?php time(); ?>">
+    <link rel="icon" href="img/favicon/sk.ico">
     <title>Library</title>
     <style>
         /* Basic header styles */
@@ -84,7 +84,7 @@
                 if (isset($_SESSION['username'])) {
                     echo strtoupper(substr($_SESSION['username'], 0, 1));
                 } else {
-                    echo '<img src="/VL/img/fontawesome-free-6.6.0-web/svgs/regular/login.png" style="width: 2.92rem; height: auto;">';
+                    echo '<img src="img/fontawesome-free-6.6.0-web/svgs/regular/login.png" style="width: 2.92rem; height: auto;">';
                 }
                 ?>
             </div>

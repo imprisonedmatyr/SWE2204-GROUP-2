@@ -3,8 +3,8 @@ session_start();
 require 'db_connect.php';
 
 // Constants for upload directories
-define('UPLOAD_DIR', '/opt/lampp/htdocs/VL/img/Book_Covers/');
-define('SUMMARY_UPLOAD_DIR', '/opt/lampp/htdocs/VL/Summary/');
+define('UPLOAD_DIR', '/opt/lampp/htdocsimg/Book_Covers/');
+define('SUMMARY_UPLOAD_DIR', '/opt/lampp/htdocsSummary/');
 //Constants for allowed file types
 $allowed_types = ['image/jpg','image/jpeg', 'image/png', 'image/gif'];
 $allowed_summary_types = ['application/pdf', 'text/plain', 'application/epub+zip'];

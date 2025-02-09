@@ -10,8 +10,8 @@ require 'db_connect.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Search Results</title>
-    <link rel="icon" href="/VL/img/favicon/sk.ico">
-    <link rel="stylesheet" href="/VL/css/styles2.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/styles2.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -92,7 +92,7 @@ require 'db_connect.php';
                     const coverPage = document.createElement('div');
                     coverPage.classList.add('book-coverpage');
                     const coverImage = document.createElement('img');
-                    coverImage.src = '/VL/img/Book_Covers/' + book.IMAGE;
+                    coverImage.src = 'img/Book_Covers/' + book.IMAGE;
                     coverImage.alt = book.TITLE + 'book cover image';
                     coverPage.appendChild(coverImage);
                     bookDiv.appendChild(coverPage);

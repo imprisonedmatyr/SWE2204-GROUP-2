@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $chapter_id = intval($_POST['chapter_id']); // chapter_id passed in selected options of the select form element
     $chapter_title = htmlspecialchars(trim($_POST['chapter_title']));
     $book_id = intval($_POST['book_id']);
-    $upload_dir = "/VL/chapters/";
+    $upload_dir = "chapters/";
 
     $file_path = '';
 

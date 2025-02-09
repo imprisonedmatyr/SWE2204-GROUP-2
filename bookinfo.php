@@ -88,8 +88,8 @@ if (isset($_POST['bookmark'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($book['TITLE']); ?></title>
-    <link rel="stylesheet" href="/VL/css/bookinfo.css?v=<?php echo time(); ?>">
-    <link rel="icon" type="image/x-icon" href="/VL/img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/bookinfo.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/x-icon" href="img/favicon/sk.ico">
 </head>
 
 <body>
@@ -103,7 +103,7 @@ if (isset($_POST['bookmark'])) {
         <section class="book-info-section">
             <div class="book-details">
                 <div class="book-cover">
-                    <img src="/VL/img/Book_Covers/<?php echo htmlspecialchars($book['BOOK_COVER']); ?>"
+                    <img src="img/Book_Covers/<?php echo htmlspecialchars($book['BOOK_COVER']); ?>"
                         alt="<?php echo htmlspecialchars($book['TITLE']); ?> cover" id="book-cover">
                 </div>
                 <div class="book-meta">
@@ -136,7 +136,7 @@ if (isset($_POST['bookmark'])) {
                 $file_path = '';
 
                 if ($book && !empty($book['short_description'])) {
-                    $file_path = $_SERVER['DOCUMENT_ROOT'] . "/VL/Summary/" . $book['short_description'];
+                    $file_path = $_SERVER['DOCUMENT_ROOT'] . "Summary/" . $book['short_description'];
                 }
 
                 ?>
@@ -227,7 +227,7 @@ if (isset($_POST['bookmark'])) {
                 while ($relatedBook = $relatedResult->fetch_assoc()) {
                     echo '<div class="related-book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<a href="bookinfo.php?book_id=' . $relatedBook['book_id'] . '"><img src="/VL/img/Book_Covers/' . htmlspecialchars($relatedBook['BOOK_COVER']) . '" alt="' . htmlspecialchars($relatedBook['TITLE']) . ' cover"></a>';
+                    echo '<a href="bookinfo.php?book_id=' . $relatedBook['book_id'] . '"><img src="img/Book_Covers/' . htmlspecialchars($relatedBook['BOOK_COVER']) . '" alt="' . htmlspecialchars($relatedBook['TITLE']) . ' cover"></a>';
                     echo '</div>';
                     echo '<div class="link">';
                     echo '<a href="bookinfo.php?book_id=' . $relatedBook['book_id'] . '">' . htmlspecialchars($relatedBook['TITLE']) . '</a>';

@@ -2,7 +2,7 @@
 require 'db_connect.php';
 
 // Constants for upload directories and allowed file types
-define('UPLOAD_DIR', '/xampp/htdocs/VL/chapters/');
+define('UPLOAD_DIR', '/xampp/htdocschapters/');
 $allowed_types = ['application/pdf', 'text/plain', 'application/epub+zip'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

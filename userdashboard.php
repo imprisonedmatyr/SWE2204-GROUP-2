@@ -9,8 +9,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Dashboard</title>
-    <link rel="stylesheet" href="/VL/css/userdashboard.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="/VL/img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/userdashboard.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="img/favicon/sk.ico">
 </head>
 
 <body>

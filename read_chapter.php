@@ -33,7 +33,7 @@ if (isset($_GET['chapter_id'])) {
         }
 
         // fetch filepath from stored location 
-        $file_path = "/xampp/htdocs/VL/chapters/" . $chapter['File_path'];
+        $file_path = "/xampp/htdocschapters/" . $chapter['File_path'];
 
         // check file path exists
         if (file_exists($file_path)) {
@@ -79,8 +79,8 @@ $chaptersResult = $connection->query($chapterQuery);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($book['TITLE']); ?> - <?php echo htmlspecialchars($chapter['Chapter_title']); ?>
     </title>
-    <link rel="stylesheet" href="/VL/css/read_chapter.css?v=<?php time(); ?>">
-    <link rel="icon" type="image/x-icon" href="/VL/img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/read_chapter.css?v=<?php time(); ?>">
+    <link rel="icon" type="image/x-icon" href="img/favicon/sk.ico">
 </head>
 
 <body>

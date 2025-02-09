@@ -1,4 +1,4 @@
-let featuredOffset = 10;
+flet featuredOffset = 10;
 let mostVisitedOffset = 10;
 const limit = 10;
 
@@ -14,7 +14,7 @@ function loadMoreBooks(section) {
                     const bookItem = `
                                 <div class="book-item">
                                     <div class="book-coverpage">
-                                        <img src="/VL/img/Book_Covers/${book.IMAGE}" alt="${book.TITLE} book cover image">
+                                        <img src="img/Book_Covers/${book.IMAGE}" alt="${book.TITLE} book cover image">
                                     </div>
                                     <div class="book-title">
                                         <a class="title-anchor" href="bookinfo.php?book_id=${book.book_id}">${book.TITLE}</a>
