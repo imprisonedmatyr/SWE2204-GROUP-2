@@ -66,8 +66,8 @@ $connection->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign-In</title>
-    <link rel="icon" type="image/x-icon" href="/VL/img/favicon/sk.ico">
-    <link rel="stylesheet" href="/VL/css/signIn.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/x-icon" href="img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/signIn.css?v=<?php echo time(); ?>">
 </head>
 
 <body>

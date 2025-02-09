@@ -26,8 +26,8 @@ if (!$trendingResult) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DashBoard</title>
-    <link rel="icon" href="/VL/img/favicon/sk.ico">
-    <link rel="stylesheet" href="/VL/css/AdminDashboard.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/AdminDashboard.css?v=<?php echo time(); ?>">
 </head>
 
 <body>

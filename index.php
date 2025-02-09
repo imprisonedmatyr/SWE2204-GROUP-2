@@ -45,7 +45,7 @@ if (isset($_GET['book_id'])) {
         // Display book details
         echo "<h1>" . htmlspecialchars($book['TITLE']) . "</h1>";
         echo "<p>by " . htmlspecialchars($book['AUTHOR']) . "</p>";
-        echo "<img src='/VL/img/Book_Covers/" . htmlspecialchars($book['BOOK COVER']) . "' alt='" . htmlspecialchars($book['TITLE']) . " book cover'>";
+        echo "<img src='img/Book_Covers/" . htmlspecialchars($book['BOOK COVER']) . "' alt='" . htmlspecialchars($book['TITLE']) . " book cover'>";
         echo "<p>Visits: " . $book['visits'] . "</p>";
         exit;
     } else {
@@ -62,8 +62,8 @@ if (isset($_GET['book_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="icon" type="image/x-icon" href="/VL/img/favicon/sk.ico">
-    <link rel="stylesheet" href="/VL/css/styles1.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/x-icon" href="img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/styles1.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
@@ -115,7 +115,7 @@ if (isset($_GET['book_id'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<a href="bookinfo.php?book_id=' . $row['book_id'] . '"><img src="/VL/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
+                    echo '<a href="bookinfo.php?book_id=' . $row['book_id'] . '"><img src="img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
                     echo '</div>';
                     echo '<div class="book-title">';
                     echo '<a class="title-anchor" href="bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
@@ -142,7 +142,7 @@ if (isset($_GET['book_id'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<img src="/VL/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image">';
+                    echo '<img src="img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image">';
                     echo '</div>';
                     echo '<div class="book-title">';
                     echo '<a class="title-anchor" href="bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
@@ -201,7 +201,7 @@ if (isset($_GET['book_id'])) {
                     const coverPage = document.createElement('div');
                     coverPage.classList.add('book-coverpage');
                     const coverImage = document.createElement('img');
-                    coverImage.src = '/VL/img/Book_Covers/' + book.IMAGE;
+                    coverImage.src = 'img/Book_Covers/' + book.IMAGE;
                     coverImage.alt = book.TITLE + 'book cover image';
                     coverPage.appendChild(coverImage);
                     bookDiv.appendChild(coverPage);

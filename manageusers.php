@@ -10,8 +10,8 @@ require 'db_connect.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Users</title>
-    <link rel="stylesheet" href="/VL/css/manageusers.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="/VL/img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/manageusers.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="img/favicon/sk.ico">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 

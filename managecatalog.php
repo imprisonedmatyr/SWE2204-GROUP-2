@@ -36,8 +36,8 @@ $p3 = $p2->get_result();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manage Catalog</title>
-    <link rel="stylesheet" href="/VL/css/managecatalog.css?v=<?php echo time(); ?>">
-    <link rel="icon" href="/VL/img/favicon/sk.ico">
+    <link rel="stylesheet" href="css/managecatalog.css?v=<?php echo time(); ?>">
+    <link rel="icon" href="img/favicon/sk.ico">
 </head>
 
 <body>
