@@ -28,8 +28,7 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE `Library_web_db`;
 CREATE USER 'group2'@'localhost' IDENTIFIED BY 'group2';
-GRANT ALL PRIVILEGES ON `Library_web_db`.* TO 'group2'@'localhost';
-
+GRANT ALL PRIVILEGES ON Library_web_db.* TO 'group2'@'localhost';
 
 FLUSH PRIVILEGES;
 
