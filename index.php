@@ -45,7 +45,7 @@ if (isset($_GET['book_id'])) {
         // Display book details
         echo "<h1>" . htmlspecialchars($book['TITLE']) . "</h1>";
         echo "<p>by " . htmlspecialchars($book['AUTHOR']) . "</p>";
-        echo "<img src='img/Book_Covers/" . htmlspecialchars($book['BOOK COVER']) . "' alt='" . htmlspecialchars($book['TITLE']) . " book cover'>";
+        echo "<img src='db/Book_Covers/" . htmlspecialchars($book['BOOK COVER']) . "' alt='" . htmlspecialchars($book['TITLE']) . " book cover'>";
         echo "<p>Visits: " . $book['visits'] . "</p>";
         exit;
     } else {
