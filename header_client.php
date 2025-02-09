@@ -72,7 +72,7 @@
 
 <body>
     <header class="header">
-        <a href="home1.php" class="logo">Library</a>
+        <a href="index.php" class="logo">Library</a>
         <div class="user-icon" onclick="toggleDropdown()">
             <div class="user-circle">
                 <?php
@@ -86,14 +86,14 @@
             </div>
             <div class="dropdown">
                 <?php if (isset($_SESSION['is_staff']) && $_SESSION['is_staff'] != 1): ?>
-                    <a href="home1.php" class="logo">Home</a>
+                    <a href="index.php" class="logo">Home</a>
                     <a href="search.php">Browse</a>
                     <a href="userdashboard.php">Dashboard</a>
                     <a href="Accountinfo.php">Profile</a>
                     <a href="favourites.php">My Library</a>
                     <a href="logout.php">Logout</a>
                 <?php else: ?>
-                    <a href="home1.php" class="logo">Home</a>
+                    <a href="index.php" class="logo">Home</a>
                     <a href="signIn.php">log In</a>
                     <a href="CreateAccount.php">Sign Up</a>
                 <?php endif; ?>
