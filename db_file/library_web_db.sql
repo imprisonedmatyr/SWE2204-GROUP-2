@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `books`
 --
 CREATE DATABASE `Library_web_db`;
+DROP USER IF EXISTS 'group2'@'localhost';
 CREATE USER 'group2'@'localhost' IDENTIFIED BY 'group2';
 GRANT ALL PRIVILEGES ON Library_web_db.* TO 'group2'@'localhost';
 

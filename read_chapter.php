@@ -33,7 +33,7 @@ if (isset($_GET['chapter_id'])) {
         }
 
         // fetch filepath from stored location 
-        $file_path = "/xampp/htdocschapters/" . $chapter['File_path'];
+        $file_path = "chapters/" . $chapter['File_path'];
 
         // check file path exists
         if (file_exists($file_path)) {
