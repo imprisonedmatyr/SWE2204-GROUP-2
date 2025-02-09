@@ -1,0 +1,19 @@
+name: Enforce Author-Only Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  enforce-author-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR was merged by the author
+        run: |
+          PR_AUTHOR=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)
+          MERGER=$(jq -r '.sender.login' $GITHUB_EVENT_PATH)
+
+          if [[ "$PR_AUTHOR" != "$MERGER" ]]; then
+            echo "Error: Only the PR author can merge this pull request!"
+            exit 1
+          fi
