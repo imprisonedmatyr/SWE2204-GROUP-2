@@ -1,0 +1,23 @@
+name: Enforce Author-Only Merge
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  enforce-author-merge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR was merged by the author
+        run: |
+          PR_AUTHOR=$(jq -r '.pull_request.user.login' $GITHUB_EVENT_PATH)
+          MERGER=$(jq -r '.sender.login' $GITHUB_EVENT_PATH)
+
+          if [[ "$PR_AUTHOR" != "$MERGER" ]]; then
+            echo "❌ Unauthorized Merge. Reverting..."
+            PR_NUMBER=$(jq -r '.pull_request.number' $GITHUB_EVENT_PATH)
+            curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+                 -H "Accept: application/vnd.github.v3+json" \
+                 https://api.github.com/repos/${{ github.repository }}/pulls/${PR_NUMBER}/revert
+            exit 1
+          fi
