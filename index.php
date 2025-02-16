@@ -78,9 +78,9 @@ if (isset($_GET['book_id'])) {
         <div>
             <form id="form">
                 <div class="sb">
-                    <input type="text" name="title" id="searchInput" placeholder="Search for books, authors, or genres..." class="search-input">
+                    <input type="text" name="title" id="searchInput" placeholder="Search for books, authors, or genres...">
                     <input type="text" name="author" placeholder="Author">
-                    <select name="genre">
+                    <select name="genre" class="select-option">
                         <option value="">Category</option>
                         <?php
                         $cat = $connection->prepare("SELECT DISTINCT CATEGORY FROM books");
