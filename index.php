@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-require 'db_connect.php';
+require 'E-Library/db_connect.php';
 
 // Check if it's an AJAX request for loading more books
 if (isset($_GET['section']) && isset($_GET['limit']) && isset($_GET['offset'])) {
@@ -62,16 +62,18 @@ if (isset($_GET['book_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Library</title>
-    <link rel="icon" type="image/x-icon" href="img/favicon/sk.ico">
-    <link rel="stylesheet" href="css/styles1.css?v=<?php echo time(); ?>">
+    <link rel="icon" type="image/x-icon" href="E-Library/img/favicon/sk.ico">
+    <link rel="stylesheet" href="E-Library/css/styles1.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" href="E-Library/css/header.css?v=<?php time(); ?>">
+	<link rel="stylesheet" href="E-Library/css/footer.css?v=<?php echo time(); ?>">
 </head>
 
 <body>
-    <header>
-        <?php
-        include 'header_client.php';
-        ?>
-    </header>
+
+	<?php
+	include 'E-Library/header_client.php';
+	?>
+
 
     <!-- Search Bar -->
     <div class="search-bar">
@@ -115,7 +117,7 @@ if (isset($_GET['book_id'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<a href="bookinfo.php?book_id=' . $row['book_id'] . '"><img src="img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
+                    echo '<a href="bookinfo.php?book_id=' . $row['book_id'] . '"><img src="E-Library/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
                     echo '</div>';
                     echo '<div class="book-title">';
                     echo '<a class="title-anchor" href="bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
@@ -142,7 +144,7 @@ if (isset($_GET['book_id'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<img src="img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image">';
+                    echo '<img src="E-Library/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image">';
                     echo '</div>';
                     echo '<div class="book-title">';
                     echo '<a class="title-anchor" href="bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
@@ -158,11 +160,10 @@ if (isset($_GET['book_id'])) {
     </div>
 
     <!-- Footer -->
-    <footer>
-        <?php include 'footer.php'; ?>
-    </footer>
 
-    <script src="Script_Functions.js"></script>
+    <?php include 'E-Library/footer.php'; ?>
+
+    <script src="E-Library/Script_Functions.js"></script>
 
     <script>
         document.getElementById('form').addEventListener('submit', async function(event) {
@@ -170,7 +171,7 @@ if (isset($_GET['book_id'])) {
 
             const formData = new FormData(event.target);
 
-            const response = await fetch('searchResult.php', {
+            const response = await fetch('E-Library/searchResult.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -201,7 +202,7 @@ if (isset($_GET['book_id'])) {
                     const coverPage = document.createElement('div');
                     coverPage.classList.add('book-coverpage');
                     const coverImage = document.createElement('img');
-                    coverImage.src = 'img/Book_Covers/' + book.IMAGE;
+                    coverImage.src = 'E-Library/img/Book_Covers/' + book.IMAGE;
                     coverImage.alt = book.TITLE + 'book cover image';
                     coverPage.appendChild(coverImage);
                     bookDiv.appendChild(coverPage);
@@ -209,7 +210,7 @@ if (isset($_GET['book_id'])) {
                     const titleDiv = document.createElement('div');
                     titleDiv.classList.add('book-title');
                     const titleLink = document.createElement('a');
-                    titleLink.href = 'bookinfo.php?book_id=' + book.book_id;
+                    titleLink.href = 'E-Library/bookinfo.php?book_id=' + book.book_id;
                     titleLink.textContent = book.TITLE;
                     titleDiv.appendChild(titleLink);
                     bookDiv.appendChild(titleDiv);
