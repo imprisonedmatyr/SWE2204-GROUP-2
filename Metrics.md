@@ -27,6 +27,11 @@ Lecture 3
 		- **Attribute:** View count 
 		- **Scale:** Ratio scale 
 		- **Unit:** Count or views
-	
+2. Book ratings
+	- A user can rate a book by liking or disliking with a thumbs up or a thumbs down respectively. This is stored in the data base for each user for each book as a 1 and a 0 respectively.
+		- **Attribute:** Rating (like or dislike) 
+		- **Scale:** Binary scale 
+		- **Unit:** Bit
+
 Lecture 2
 ---------
