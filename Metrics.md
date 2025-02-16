@@ -1,10 +1,7 @@
 This document descibes concepts from each Lecture we have applied to the E-Library web app
 ==========================================================================================
 
-Lecture 1
----------
-
-Lecture 2
+Lecture 3
 ---------
 
 **Concept:** Goal Based Metrics
@@ -25,3 +22,11 @@ Lecture 2
 
 ![Graph](md-assets/Rplot.png)
 - How we have implemeted the metrics
+1. Book views
+	- Each time a user opens a book, its view count is incremented in the database by 1  
+		- **Attribute:** View count 
+		- **Scale:** Ratio scale 
+		- **Unit:** Count or views
+	
+Lecture 2
+---------
