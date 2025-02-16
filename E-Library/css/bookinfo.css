@@ -1,0 +1,237 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #2d353c;
+    color: #333;
+}
+
+main {
+    padding: 20px;
+}
+
+.book-info-section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.book-details {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.book-cover img {
+    width: 200px;
+    height: auto;
+    border-radius: 4px;
+}
+
+.book-meta {
+    margin-left: 20px;
+}
+
+.book-meta h1 {
+    margin: 0;
+}
+
+.book-description,
+.user-reviews, 
+.chapter-selection, 
+.related-books {
+    margin-top: 20px;
+}
+
+.download-icon {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+ img {
+    vertical-align: middle;
+}
+
+.user-reviews textarea {
+    height: 80px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+}
+
+.user-reviews .review {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.bookmark-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px; 
+    height: 40px;
+}
+
+.bookmark-icon button {
+    position: relative;
+}
+
+button {
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 1.3rem;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+}
+
+.user-reviews button {
+    margin: 10px 0px 0;
+    width: 250px;
+}
+ 
+button:hover {
+    background-color: #0a440d;
+}
+
+.section_related_books{
+    text-align: center;
+    color: white !important;
+    margin-top: -40px;
+}
+
+.related-books {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 20px;
+    background-color: #fff;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
+}
+
+.related-book-item {
+    flex: 1 0 21%; 
+    max-width: 120px;
+    border: 1px solid #bdc3c7;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.related-book-item:hover {
+    transform: translateY(-5px); /* Hover effect */
+    box-shadow: 0 4px 20px;
+}
+
+.link{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-wrap: wrap;
+    margin-top: auto;
+    width: 100%;
+}
+
+.related-book-item img {
+    width: 100%;
+    height: auto;
+}
+
+.related-book-item a {
+    text-decoration: none;
+    font-size: 15px;
+}
+
+/* Media Queries */
+
+/* Tablet devices */
+@media (max-width: 768px) {
+    .book-details {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .book-cover img {
+        width: 150px;
+        margin-bottom: 15px;
+    }
+
+    .book-meta {
+        text-align: center;
+        margin-left: 0;
+    }
+
+    .related-books {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .related-book-item {
+        max-width: 150px;
+        margin: 0 auto;
+    }
+
+    button, .user-reviews button {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+    main {
+        padding: 10px;
+    }
+
+    .book-info-section, .related-books {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    .book-cover img {
+        width: 120px;
+    }
+
+    .book-meta h1 {
+        font-size: 1.5rem;
+    }
+
+    .book-meta p {
+        font-size: 0.9rem;
+    }
+
+    .user-reviews textarea {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .download-icon img {
+        width: 18px;
+        height: 18px;
+    }
+
+    button, .user-reviews button {
+        width: 100%;
+        padding: 8px;
+        font-size: 1rem;
+    }
+
+    .related-book-item {
+        flex: 1 0 100%;
+        max-width: 100%;
+    }
+
+    .related-books {
+        display: block;
+    }
+}

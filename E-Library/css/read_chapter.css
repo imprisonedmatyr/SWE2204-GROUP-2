@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-links a {
+    color: #fff;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.chapter-content-section {
+    max-width: 800px; /* Set a maximum width for better readability */
+    margin: 20px auto; /* Center the section */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chapter-text {
+    margin: 20px 0; /* Add spacing above and below the chapter text */
+}
+
+.chapter-text p {
+    text-align: justify; /* Justify text for better appearance */
+    font-size: 18px; /* Increase font size */
+    margin-bottom: 10px; /* Space between paragraphs */
+}
+
+/* Add a rule to insert extra spacing after every three paragraphs */
+.chapter-text p:nth-of-type(3n) {
+    margin-bottom: 40px; /* Increase bottom margin after every third paragraph */
+}
+
+.chapter-navigation {
+    margin-top: 30px; /* Space above navigation */
+}
+
+.chapter-navigation h2 {
+    font-size: 24px;
+}
+
+.chapter-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+.chapter-list li {
+    margin: 10px 0; /* Space between items */
+}
+
+.chapter-list a {
+    text-decoration: none; /* Remove underline */
+    color: #007bff; /* Bootstrap primary color */
+}
+
+.chapter-list a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+
+/* Responsive design */
+/* Mobile styles (default) */
+body {
+    font-size: 16px; /* Base font size */
+}
+
+/* Tablet styles */
+@media screen and (min-width: 601px) {
+    body {
+        font-size: 18px; /* Larger font for tablets */
+    }
+}
+
+/* Desktop styles */
+@media screen and (min-width: 901px) {
+    body {
+        font-size: 20px; /* Even larger font for desktops */
+    }
+    
+    .navigation {
+        display: flex; /* Horizontal navigation */
+    }
+}
+
+/* Landscape orientation */
+@media screen and (orientation: landscape) {
+    .sidebar {
+        display: block; /* Show sidebar in landscape mode */
+    }
+}

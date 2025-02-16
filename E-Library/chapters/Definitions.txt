@@ -1,0 +1,20 @@
+Abstract:
+According to this paper, cloud computing is described as a model or framework that enables accessible, convenient, on-demand access to shared pools of configurable computing resources (like networks, servers, storage, applications, and services).
+
+Buyya et al definition:
+“A Cloud is a type of parallel and distributed system consisting of a collection of inter-connected and virtualized computers that are dynamically provisioned and presented as one or more unified computing resource(s) based on service-level agreements established through negotiation between the service provider and consumers”  
+
+According to P. Gaw:
+“‘cloud computing’ refers to the bigger picture…basically the broad concept of using the internet to allow people to access technology-enabled services. According to Gartner, those services must be 'massively scalable' to qualify as true 'cloud computing'".
+
+J. Kaplan definition:
+Cloud computing is a broad array of web-based services aimed at allowing users to obtain a wide range of functional capabilities on a 'pay-as-you-go' basis that previously required tremendous hardware/software investments and professional skills to acquire.
+
+Abstract definition:
+According to this paper, it defines Cloud computing as a model for enabling convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction. This is the way as the NIST defines cloud computing.
+
+NIST definition:
+“Cloud computing is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of configurable computing resources (e.g., networks, servers, storage, applications, and services) that can be rapidly provisioned and released with minimal management effort or service provider interaction.”
+
+Relationship among the three papers;
+All the above definitions actually agree with the NIST definition of Cloud Computing. Even with the extra definitions provided still all they talk about is entirely covered in the NIST definition.

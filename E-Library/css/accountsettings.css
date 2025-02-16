@@ -1,0 +1,65 @@
+body {
+    font-family: 'Arial', sans-serif; /* Example of a web-safe font */
+}
+
+header {
+    background-color: #333;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: aliceblue;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-links a {
+    color: aliceblue;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.settings-section {
+    padding: 20px;
+    text-align: center;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.settings-form input {
+    padding: 10px;
+    width: 250px;
+}
+
+.settings-form input:focus {
+    border: 2px solid #333; /* Highlight input on focus */
+    outline: none; /* Remove default outline */
+}
+
+.settings-form button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: aliceblue;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-links a:hover,
+.settings-form button:hover {
+    text-decoration: underline;
+    background-color: #444; /* Darker shade on hover for buttons */
+}
+
+@media (max-width: 600px) {
+    .settings-form input {
+        width: 100%; /* Make inputs full-width on smaller screens */
+    }
+}

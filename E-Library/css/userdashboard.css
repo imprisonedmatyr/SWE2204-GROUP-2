@@ -1,0 +1,85 @@
+:root {
+  --main-bg-color: lightgrey;
+  --header-bg-color: #333;
+  --header-text-color: aliceblue;
+  --action-bg-color: white;
+  --action-hover-color: #f1f1f1;
+}
+
+body,
+html {
+  background-color: var(--main-bg-color);
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  align-items: center;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.dashboard {
+  padding: 20px;
+}
+
+.welcome-section {
+  text-align: center;
+  padding: 20px;
+}
+
+.dashboard-actions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+}
+
+.action-item {
+  background-color: var(--action-bg-color);
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  transition: background-color 0.2s;
+}
+
+.action-item:hover {
+  background-color: var(--action-hover-color);
+  transform: scale(1.05);
+}
+
+.action-item img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+.action-item p {
+  font-weight: bold;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .dashboard-actions {
+      grid-template-columns: 1fr; /* Stack items vertically on smaller screens */
+  }
+
+  .action-item {
+      padding: 15px; /* Adjust padding */
+  }
+
+  .action-item img {
+      width: 40px; /* Smaller icons on small screens */
+      height: 40px;
+  }
+}
