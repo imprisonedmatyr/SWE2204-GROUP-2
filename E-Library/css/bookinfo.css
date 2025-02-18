@@ -151,9 +151,39 @@ button:hover {
     font-size: 15px;
 }
 
-/* Media Queries */
+.rating {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    font-size: 1.25rem;
+}
 
-/* Tablet devices */
+.star {
+    font-size: 30px;
+    color: gray;
+}
+
+.star:hover,
+.star.selected {
+    color: gold;
+}
+
+/* Style the review textarea */
+textarea {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    min-height: 100px;
+    display: none; /* Hidden initially */
+}
+
+/* When a star is clicked, highlight the selected stars */
+.star.selected {
+    color: gold;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .book-details {
         flex-direction: column;

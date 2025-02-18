@@ -69,11 +69,9 @@ if (isset($_GET['book_id'])) {
 </head>
 
 <body>
-
 	<?php
-	include 'E-Library/header_client.php';
+	include 'E-Library/header.php';
 	?>
-
 
     <!-- Search Bar -->
     <div class="search-bar">
@@ -117,10 +115,10 @@ if (isset($_GET['book_id'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<a href="bookinfo.php?book_id=' . $row['book_id'] . '"><img src="E-Library/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
+                    echo '<a href="E-Library/bookinfo.php?book_id=' . $row['book_id'] . '"><img src="E-Library/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
                     echo '</div>';
                     echo '<div class="book-title">';
-                    echo '<a class="title-anchor" href="bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
+                    echo '<a class="title-anchor" href="E-Library/bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -144,10 +142,10 @@ if (isset($_GET['book_id'])) {
                 while ($row = $result->fetch_assoc()) {
                     echo '<div class="book-item">';
                     echo '<div class="book-coverpage">';
-                    echo '<img src="E-Library/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image">';
+                    echo '<a href="E-Library/bookinfo.php?book_id=' . $row['book_id'] . '"><img src="E-Library/img/Book_Covers/' . htmlspecialchars($row['IMAGE']) . '" alt="' . htmlspecialchars($row['TITLE']) . ' book cover image"></a>';
                     echo '</div>';
                     echo '<div class="book-title">';
-                    echo '<a class="title-anchor" href="bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
+                    echo '<a class="title-anchor" href="E-Library/bookinfo.php?book_id=' . $row['book_id'] . '">' . htmlspecialchars($row['TITLE']) . '</a>';
                     echo '</div>';
                     echo '</div>';
                 }
@@ -160,7 +158,6 @@ if (isset($_GET['book_id'])) {
     </div>
 
     <!-- Footer -->
-
     <?php include 'E-Library/footer.php'; ?>
 
     <script src="E-Library/Script_Functions.js"></script>
@@ -193,8 +190,6 @@ if (isset($_GET['book_id'])) {
             if (data.message) {
                 document.getElementById('results').innerHTML = data.message
             } else {
-
-
                 data.forEach(book => {
                     const bookDiv = document.createElement('div');
                     bookDiv.classList.add('book-item');

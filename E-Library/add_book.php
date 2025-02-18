@@ -16,8 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     try {
         // Handle file uploads...
-        $upload_dir_summary = "/xampp/htdocsSummary/";
-        $upload_dir_cover = "/xampp/htdocsimg/Book_Covers/";
+        $upload_dir_summary = "Summary/";
+        $upload_dir_cover = "img/Book_Covers/";
         
         if (!is_dir($upload_dir_summary)) {
             mkdir($upload_dir_summary, 0777, true);
