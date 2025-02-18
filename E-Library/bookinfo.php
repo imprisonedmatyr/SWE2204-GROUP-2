@@ -42,15 +42,15 @@ if (isset($_GET['book_id'])) {
 }
 
 // Handle review submission
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['review'])) {
-    $review_content = trim($_POST['review']);
-    if (!empty($review_content) && isset($_SESSION['username'])) {
-        $title = 'INSERT INTO REVIEWS (book_id, username, review) VALUES (?, ?, ?)';
-        $stmt = $connection->prepare($title);
-        $stmt->bind_param('iss', $book_id, $_SESSION['username'], $review_content);
-        $stmt->execute();
-    }
-}
+// if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['review'])) {
+//     $review_content = trim($_POST['review']);
+//     if (!empty($review_content) && isset($_SESSION['username'])) {
+//         $title = 'INSERT INTO REVIEWS (book_id, username, review) VALUES (?, ?, ?)';
+//         $stmt = $connection->prepare($title);
+//         $stmt->bind_param('iss', $book_id, $_SESSION['username'], $review_content);
+//         $stmt->execute();
+//     }
+// }
 
 // Handle bookmarking
 if (isset($_POST['bookmark'])) {
@@ -186,12 +186,35 @@ if (isset($_POST['bookmark'])) {
 
             <!-- User Reviews Section -->
             <div class="user-reviews">
-                <h2>User Reviews</h2>
+                <!-- Review Submission Form -->
+                <form style="display:flex; flex-direction:column;" action="review.php?book_id=<?php echo $book_id; ?>" method="POST">
+                    
+                    <!-- Star Rating System -->
+                    <div class="rating">
+                        <label for="rating"><b>Rating:</b> </label>
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+            
+                    <!-- Hidden Review Textarea -->
+                    <textarea name="review_content" id="review_content" placeholder="Write your review here..." style="display:none;"></textarea>
+            
+                    <!-- Hidden Rating Input -->
+                    <input type="hidden" name="rating" id="rating" value="">
+            
+                    <!-- Submit Button -->
+                    <button type="submit" id="button" name="button">Submit Review</button>
+                </form>
 
+                <h2>User Reviews</h2>
+            
                 <?php
                 $reviewQuery = "SELECT * FROM reviews WHERE book_id = $book_id";
                 $reviewResult = $connection->query($reviewQuery);
-
+            
                 if ($reviewResult->num_rows > 0) {
                     while ($review = $reviewResult->fetch_assoc()) {
                         echo '<div class="review">';
@@ -202,16 +225,24 @@ if (isset($_POST['bookmark'])) {
                     echo '<p>No reviews yet. Be the first to review!</p>';
                 }
                 ?>
-
-                <!-- Review Submission Form -->
-                <form style="display:flex; flex-direction:column;" action="review.php?book_id=<?php echo $book_id; ?>"
-                    method="POST">
-                    <textarea name="review_content" placeholder="Write your review here..." required></textarea>
-                    <button type="submit" id="button" name="button">Submit Review</button>
-                </form>
             </div>
         </section>
     </main>
+
+    <script>
+        const stars = document.querySelectorAll('.star');
+        const reviewContent = document.getElementById('review_content');
+        const ratingInput = document.getElementById('rating');
+    
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                const rating = star.getAttribute('data-value');
+                ratingInput.value = rating; // Set the hidden input value to the clicked star rating
+                reviewContent.style.display = 'block'; // Show the review textarea when a rating is selected
+            });
+        });
+    </script>
+
     <!-- Related Books Section -->
     <section class="section_related_books">
             <?php
