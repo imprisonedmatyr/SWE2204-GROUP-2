@@ -66,6 +66,23 @@ if (isset($_GET['book_id'])) {
     <link rel="stylesheet" href="E-Library/css/styles1.css?v=<?php echo time(); ?>">
 	<link rel="stylesheet" href="E-Library/css/header.css?v=<?php time(); ?>">
 	<link rel="stylesheet" href="E-Library/css/footer.css?v=<?php echo time(); ?>">
+    <style>
+        .star-rating {
+            display: flex;
+            justify-content: center;
+            margin: 10px 0;
+        }
+
+        .star {
+            cursor: pointer;
+            color: gold; /* Change color as needed */
+            font-size: 30px; /* Adjust size as needed */
+        }
+
+        .star.selected {
+            color: orange; /* Change color for selected stars */
+        }
+    </style>
 </head>
 
 <body>
@@ -157,6 +174,20 @@ if (isset($_GET['book_id'])) {
         <button class="show-more-btn" onclick="loadMoreBooks('most-visited')">Show More</button>
     </div>
 
+    <!-- Star Rating Section -->
+    <div class="star-rating-section" id="star-rating" style="text-align: center; margin: 20px 0;">
+        <h2>Rate this Book</h2>
+        <div class="star-rating" style="font-size: 24px;">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+        </div>
+        <button id="submit-rating" class="submit-btn">Submit Rating</button>
+        <p id="rating-message"></p>
+    </div>
+
     <!-- Footer -->
     <?php include 'E-Library/footer.php'; ?>
 
@@ -218,6 +249,31 @@ if (isset($_GET['book_id'])) {
             document.getElementById('rs').style.display = 'none';
             document.getElementById('h3').style.display = 'none';
         };
+
+        // Star rating functionality
+        const stars = document.querySelectorAll('.star');
+        let selectedRating = 0;
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                stars.forEach(s => {
+                    s.classList.remove('selected');
+                });
+                for (let i = 0; i < selectedRating; i++) {
+                    stars[i].classList.add('selected');
+                }
+            });
+        });
+
+        document.getElementById('submit-rating').addEventListener('click', () => {
+            if (selectedRating > 0) {
+                document.getElementById('rating-message').textContent = `You rated this book ${selectedRating} star(s)!`;
+                // Here you can add code to send the rating to the server
+            } else {
+                document.getElementById('rating-message').textContent = 'Please select a rating.';
+            }
+        });
     </script>
 </body>
 
