@@ -162,6 +162,7 @@ books.
  - username (VARCHAR)
  - review (LONGTEXT)
  - created_at (TIMESTAMP CURRENT_TIMESTAMP)
+ - rating (INT)
 
 Security Considerations
 -----------------------
