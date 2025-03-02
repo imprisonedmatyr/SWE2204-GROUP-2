@@ -157,24 +157,13 @@ CREATE TABLE `reviews` (
   `book_id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `review` longtext NOT NULL,
+  `rating` int(11),
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `reviews`
 --
-
-INSERT INTO `reviews` (`book_id`, `username`, `review`, `created_at`) VALUES
-(411, 'A_god', 'it\'s a master piece', '2024-11-07 05:43:37'),
-(411, 'A_god', 'just another day in the office', '2024-11-07 05:44:10'),
-(411, 'A_god', 'just another day in the office', '2024-11-07 05:50:21'),
-(411, 'A_god', 'Heal it or break it apart', '2024-11-07 05:57:28'),
-(420, 'Sam', 'hurry up and upload the chapters for this book already', '2024-11-07 08:05:54'),
-(453, 'A_god', 'Sike', '2024-11-09 08:36:28'),
-(453, 'A_god', 'best story ever', '2024-11-09 08:36:51'),
-(419, 'A_god', 'dope', '2024-11-09 15:29:05'),
-(419, 'A_god', 'lammmeee', '2024-11-09 15:31:21'),
-(419, 'A_god', 'lammmeeeh', '2024-11-09 15:34:53');
 
 -- --------------------------------------------------------
 
