@@ -188,26 +188,27 @@ if (isset($_POST['bookmark'])) {
             <div class="user-reviews">
                 <!-- Review Submission Form -->
                 <form style="display:flex; flex-direction:column;" action="review.php?book_id=<?php echo $book_id; ?>" method="POST">
-                    
-                    <!-- Star Rating System -->
-                    <div class="rating">
-                        <label for="rating"><b>Rating:</b> </label>
-                        <span class="star" data-value="1">★</span>
-                        <span class="star" data-value="2">★</span>
-                        <span class="star" data-value="3">★</span>
-                        <span class="star" data-value="4">★</span>
-                        <span class="star" data-value="5">★</span>
-                    </div>
-            
-                    <!-- Hidden Review Textarea -->
-                    <textarea name="review_content" id="review_content" placeholder="Write your review here..." style="display:none;"></textarea>
-            
-                    <!-- Hidden Rating Input -->
-                    <input type="hidden" name="rating" id="rating" value="">
-            
-                    <!-- Submit Button -->
-                    <button type="submit" id="button" name="button">Submit Review</button>
-                </form>
+    
+					<!-- Star Rating System -->
+					<div class="rating">
+						<label for="rating"><b>Rating:</b> </label>
+						<span class="star" data-value="1">★</span>
+						<span class="star" data-value="2">★</span>
+						<span class="star" data-value="3">★</span>
+						<span class="star" data-value="4">★</span>
+						<span class="star" data-value="5">★</span>
+					</div>
+
+					<!-- Hidden Review Textarea -->
+					<textarea name="review_content" id="review_content" placeholder="Write your review here..." style="display:none;"></textarea>
+
+					<!-- Hidden Rating Input -->
+					<input type="hidden" name="rating" id="rating" value="">
+
+					<!-- Submit Button -->
+					<button type="submit" id="button" name="button">Submit Review</button>
+				</form>
+
 
                 <h2>User Reviews</h2>
             
@@ -229,19 +230,31 @@ if (isset($_POST['bookmark'])) {
         </section>
     </main>
 
-    <script>
-        const stars = document.querySelectorAll('.star');
-        const reviewContent = document.getElementById('review_content');
-        const ratingInput = document.getElementById('rating');
-    
-        stars.forEach(star => {
-            star.addEventListener('click', () => {
-                const rating = star.getAttribute('data-value');
-                ratingInput.value = rating; // Set the hidden input value to the clicked star rating
-                reviewContent.style.display = 'block'; // Show the review textarea when a rating is selected
-            });
-        });
-    </script>
+	<script>
+		const stars = document.querySelectorAll('.star');
+		const reviewContent = document.getElementById('review_content');
+		const ratingInput = document.getElementById('rating');
+
+		stars.forEach((star, index) => {
+			star.addEventListener('click', () => {
+				const rating = star.getAttribute('data-value');
+				ratingInput.value = rating; // Set the hidden input value to the clicked star rating
+				
+				// Show the review textarea when a rating is selected
+				reviewContent.style.display = 'block';
+				
+				// Change color of clicked star and all previous stars
+				stars.forEach((s, i) => {
+					if (i <= index) {
+						s.style.color = 'gold'; // Change this color to whatever you prefer
+					} else {
+						s.style.color = 'grey'; // Change this color to whatever you prefer
+					}
+				});
+			});
+		});
+	</script>
+
 
     <!-- Related Books Section -->
     <section class="section_related_books">
