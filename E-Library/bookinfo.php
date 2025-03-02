@@ -125,7 +125,7 @@ if (isset($_POST['bookmark'])) {
             <div class="bookmark-icon">
                 <button id="bookmark-button" onclick="toggleBookmark()">
                     <img src="img/fontawesome-free-6.6.0-web/svgs/bookmark/clear-bookmark.svg" alt="Un-Bookmarked-image" width="20px">
-                    <strong>Bookmark</strong>
+                    <strong>Add to My Library</strong>
                 </button>
             </div>
 
