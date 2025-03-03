@@ -162,6 +162,26 @@ CREATE TABLE `reviews` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_experience`
+--
+CREATE TABLE user_experience (
+    user_review TEXT,
+    user_stars INT,
+    username VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
+    FOREIGN KEY (username) REFERENCES users(username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+SELECT * FROM user_experience;
+
+
+ALTER TABLE user_experience
+ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username);
+
+
 --
 -- Dumping data for table `reviews`
 --
@@ -252,7 +272,7 @@ ALTER TABLE `staff`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`username`),
+  ADD PRIMARY KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_staffid` (`staffid`);
 
