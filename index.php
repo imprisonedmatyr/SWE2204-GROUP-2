@@ -75,12 +75,12 @@ if (isset($_GET['book_id'])) {
 
         .star {
             cursor: pointer;
-            color: gold; /* Change color as needed */
+            color: white; /* Default color for unselected stars */
             font-size: 30px; /* Adjust size as needed */
         }
 
         .star.selected {
-            color: orange; /* Change color for selected stars */
+            color: gold; /* Color for selected stars */
         }
     </style>
 </head>
@@ -176,7 +176,7 @@ if (isset($_GET['book_id'])) {
 
     <!-- Star Rating Section -->
     <div class="star-rating-section" id="star-rating" style="text-align: center; margin: 20px 0;">
-        <h2>Rate this Book</h2>
+        <h2 style="color: black;">Rate your user experience for this website</h2>
         <div class="star-rating" style="font-size: 24px;">
             <span class="star" data-value="1">&#9733;</span>
             <span class="star" data-value="2">&#9733;</span>
@@ -184,8 +184,11 @@ if (isset($_GET['book_id'])) {
             <span class="star" data-value="4">&#9733;</span>
             <span class="star" data-value="5">&#9733;</span>
         </div>
-        <button id="submit-rating" class="submit-btn">Submit Rating</button>
-        <p id="rating-message"></p>
+
+        <!-- Review Section -->
+        <textarea id="user-review" rows="4" cols="50" placeholder="Type your review here..."></textarea>
+        <br>
+        <button id="submit-review" class="submit-btn">Submit Review</button>
     </div>
 
     <!-- Footer -->
