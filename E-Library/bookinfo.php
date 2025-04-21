@@ -2,6 +2,12 @@
 session_start();
 
 require 'db_connect.php';
+function logFailure($connection, $eventType, $description) {
+    $query = "INSERT INTO failures (event_type, description) VALUES (?, ?)";
+    $stmt = $connection->prepare($query);
+    $stmt->bind_param("ss", $eventType, $description);
+    $stmt->execute();
+}
 
 $book = null;
 
@@ -26,8 +32,10 @@ if (isset($_GET['book_id'])) {
     if ($result->num_rows > 0) {
         $book = $result->fetch_assoc();
     } else {
+        logFailure($connection, 'book_not_found', "Book ID $book_id not found.");
         echo "Book not found.";
         exit;
+        
     }
 
     // Fetch chapter details
@@ -37,8 +45,10 @@ if (isset($_GET['book_id'])) {
     $stmt->execute();
     $chapterResult = $stmt->get_result();
 } else {
+    logFailure($connection, 'no_book_selected', "User tried to access bookinfo.php without selecting a book.");
     echo "No book selected.";
     exit;
+    
 }
 
 // Handle review submission
@@ -150,7 +160,9 @@ if (isset($_POST['bookmark'])) {
                         <?php echo $desc; ?>
                     </div>
                 <?php else: ?>
+                    <?php logFailure($connection, 'description_missing', "Missing description file for Book ID $book_id."); ?>
                     <p>No description available for this book.</p>
+            
                 <?php endif; ?>
             </div>
 
@@ -174,7 +186,11 @@ if (isset($_POST['bookmark'])) {
                                         <img src="img\fontawesome-free-6.6.0-web\svgs\solid\download.svg" alt="Download" style="width: 20px; height: 20px;">
                                     </a>
                                 <?php else: ?>
+                                    <?php 
+                                        logFailure($connection, 'chapter_file_missing', "Missing file for Chapter ID {$chapter['ChapterID']} of Book ID $book_id.");
+                                    ?>
                                     <span>No download available</span>
+
                                 <?php endif; ?>
                             </li>
                         <?php endwhile; ?>
