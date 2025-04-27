@@ -24,7 +24,7 @@
             - Team experience: Low -> 1.10
         - Project:
             - Tool use: Low (PHP, MySQL) ->1.09
-        EAF:
+    - EAF:
             EAF = 1.00*1.00*1.10*1.09 = 1.20
     - Define scaling factor
         - PREC: Low -> 4.96
@@ -32,7 +32,7 @@
         - RESL: Nominal -> 5.46
         - PMAT: Nominal -> 4.68
         - TEAM: Nominal -> 3.29
-        b = 0.91 + 0.01(3.04 + 5.56 + 4.68 + 3.29 + 4.96) = 1.12
+    - b = 0.91 + 0.01(3.04 + 5.56 + 4.68 + 3.29 + 4.96) = 1.12
 2. Caltulate effort
     - Fomular: 
         E = 2.45 * (KLOC)^b * EAF
