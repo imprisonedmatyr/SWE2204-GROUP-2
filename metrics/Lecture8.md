@@ -1,4 +1,4 @@
-- Goal: **Evaluate and ensure the software quality of the system, to meet user needs and deliver a reliable, efficient, and maintainable system.**
+### Goal: **Evaluate and ensure the software quality of the system, to meet user needs and deliver a reliable, efficient, and maintainable system.**
 - Questions
     1. Functionality
         - Does the system provide all required functionalities (search, user registration, manage users)?
@@ -24,12 +24,13 @@
             - Metric: Deployment Time
 
 ### **Summary**
-| Characteristic     |  Metric           | Value           |
-| Functionality      |  Functionality coverage | Above 95%     |
-|                    |  Accuracy rate         | 98%       |
-| Reliability        |  Mean Time Between Failures | 5000s    |
-| Usability          |  Task Completion rate    | 96%    |
-|                    |  Average rating        | 4.5           |
-| Effeciency         |  Average response time  | 150ms        |
-| Maintainability    |  System complexity     | Moderate      |
-| Portability        |  Deployment Time     | 2 minutes     |
+| Characteristic  | Metric                     | Value      |
+|-----------------|-----------------------------|------------|
+| Functionality   | Functionality coverage      | Above 95%  |
+|                 | Accuracy rate               | 98%        |
+| Reliability     | Mean Time Between Failures  | 5000s      |
+| Usability       | Task Completion rate        | 96%        |
+|                 | Average rating              | 4.5        |
+| Efficiency      | Average response time       | 150ms      |
+| Maintainability | System complexity           | Moderate   |
+| Portability     | Deployment Time             | 2 minutes  |
