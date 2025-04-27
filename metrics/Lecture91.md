@@ -1,4 +1,5 @@
-##- Goal: **Measure the System Reliability to ensure dependable user experience and system performance**  
+### Goal: **Measure the System Reliability to ensure dependable user experience and system performance**  
+---
 - Questions
     1. Availability Questions
         - What percentage of time is the system operational and accessible to users?<br>
