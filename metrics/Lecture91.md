@@ -6,7 +6,7 @@
         - What percentage of time is the system operational and accessible to users?<br>
             - 99.9% target (measured via uptime logs)
         - How is system uptime monitored and logged?<br>
-            - Via cron-job-based heartbeat checks every minute; results logged to `log.txt`
+            - Via cron-job-based heartbeat checks every minute; results logged to `hertbeat_log.txt`
     2. Failure and Recovery Questions
         - How are system failures defined and categorized?<br>
             - Failures are categorized into Low, Medium, and High severity based on impact
