@@ -36,15 +36,26 @@
 1. **Availability**:
    - Uptime hours: 860 hours
    - Downtime hours: 1 hour
-   - **Availability Calculation**:  
-   \[
-   \text{Availability} = \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}}
-   \]
-   \[
-   \text{Availability} = \frac{860}{860+1} \approx 99.88\%
-   \]
+   - **Availability Calculation**:
+     
+    $$
+    \text{Availability} = \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}}
+    $$
 
-2. **MTBF (Mean Time Between Failures)**:
+    $$
+    \text{Availability} = \frac{860}{860+1} \approx 99.88\%
+    $$
+
+2. **Failure Rate**:
+   - Number of critical failures over a week: 2
+   - Requests handled in a week: 20,000
+
+$$
+\text{Failure Rate} = \frac{2}{20000} \approx 0.01\%
+$$
+
+
+3. **MTBF (Mean Time Between Failures)**:
    - Sample timestamps: [1694456400, 1694470800, 1694514000]
    - **MTBF Calculation**:
    ```php
@@ -53,10 +64,7 @@
    echo "MTBF: " . round($mtbf / 3600, 2) . " hours";
    ```
    - Result: Approximately 5 hours
-3. **Failure Rate**:
-   - Number of critical failures over a week: 2
-   - Requests handled in a week: 20,000
-   - Failure Rate = \frac{2}{20000} = 0.01%
+
 
 ---
 
