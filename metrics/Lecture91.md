@@ -1,49 +1,77 @@
-# GQM Implementation for User Experience Enhancement
+# System Reliability Measurement
 
-## Goal-Question-Metrics Structure
+{- Goal: **Measure the System Reliability to ensure dependable user experience and system performance**  
+- Questions
+    1. Availability Questions
+        - What percentage of time is the system operational and accessible to users?<br>
+            - 99.9% target (measured via uptime logs)
+        - How is system uptime monitored and logged?<br>
+            - Via cron-job-based heartbeat checks every minute; results logged to `log.txt`
+    2. Failure and Recovery Questions
+        - How are system failures defined and categorized?<br>
+            - Failures are categorized into Low, Medium, and High severity based on impact
+        - How often do critical failures (e.g., login, database failures) occur?<br>
+            - Tracked using `failures` database table with timestamps
+    3. Fault Tolerance and Resilience Questions
+        - How does the system recover from unexpected failures (e.g., database disconnection)?<br>
+            - Reconnect logic and session regeneration implemented in PHP
+        - Are there backup or retry mechanisms after a failure event?<br>
+            - Manual database export; plans for retry mechanisms for failed downloads
 
-**Paradigm:** Goal-Question-Metrics (GQM)  
-**Primary Goal (GA):** Enhance user experience through data-driven improvements
+---
 
-### Goal Questions & Corresponding Metrics
-| Question | Metric |
-|----------|--------|
-| Q1: Preferred books | M1: Book Views |
-| Q2: Desired genres | M2: Book Ratings |
-| Q3: Content relevance | M3: Session Duration |
-| Q4: App responsiveness | M4: Page Load Times | 
+### **Reliability Metric Categories and Weighting**
 
-## Metric Implementation Details
+| Metric Category        | Monitoring Tool | Target Threshold | Measurement Frequency |
+|-------------------------|-----------------|------------------|------------------------|
+| Uptime Percentage       | Cron job + log.txt | ≥99.9%          | Every minute           |
+| Mean Time Between Failures (MTBF) | PHP script analyzing `failures` table | Increase over time  | Daily |
+| Mean Time to Recovery (MTTR) | Manual and automatic recovery logs | <10 minutes | After each failure |
+| Failure Rate            | Error logger + `failures` DB | As low as possible | Weekly review |
 
-### 1. Book Views (M1)
-```sql
-// Database trigger on book open
-UPDATE books SET views = views + 1 WHERE id = ?
-```
-- **Attribute:** View count per book
-- **Scale:** Ratio
-- **Collection:** Real-time in `bookinfo.php`
+---
 
-### 2. Book Ratings (M2)
-```sql
-// Rating submission handler
-INSERT INTO user_metrics (metric_type, value) VALUES ('rating', $validatedRating)
-```
-- **Scale:** Ordinal (1-5 stars)
-- **Validation:** Server-side range checking
+## **Step 1: Metric Collection and Calculation**
 
-### 3. Session Durations (M3)
+1. **Availability**:
+   - Uptime hours: 860 hours
+   - Downtime hours: 1 hour
+   - **Availability Calculation**:  
+   \[
+   \text{Availability} = \frac{\text{Uptime}}{\text{Uptime} + \text{Downtime}}
+   \]
+   \[
+   \text{Availability} = \frac{860}{860+1} \approx 99.88\%
+   \]
+
+2. **MTBF (Mean Time Between Failures)**:
+   - Sample timestamps: [1694456400, 1694470800, 1694514000]
+   - **MTBF Calculation**:
+   ```php
+   $failures = [1694456400, 1694470800, 1694514000];
+   $mtbf = ($failures[2] - $failures[0]) / (count($failures) - 1);
+   echo "MTBF: " . round($mtbf / 3600, 2) . " hours";
+   ```
+   - Result: Approximately 5 hours
+3. **Failure Rate**:
+   - Number of critical failures over a week: 2
+   - Requests handled in a week: 20,000
+   - Failure Rate = \frac{2}{20000} = 0.01%
+
+---
+
+### **Step 2: Analysis and Reliability Growth**
+- **Trend Monitoring**:
+  - Weekly failure counts analyzed with log_analyzer.php to spot trends and   reliability improvements.
+- **Exponential Reliability Model**:
 ```php
-// Session time calculation
-$duration = microtime(true) - $_SESSION['start_time'];
+$lambda = 0.002;
+$time = 120;
+$reliability = exp(-$lambda * $time);
+echo "Predicted reliability: " . round($reliability, 4);
 ```
-- **Unit:** Minutes
-- **Storage:** Daily aggregate in `user_metrics`
+- Predicted Reliability after 2 hours: ~78%
 
-### 4. Page Load Times (M4)
-```sql
-// Page load measurement
-$loadTime = round(microtime(true) - $_SERVER["REQUEST_TIME_FLOAT"], 3);
-```
-- **Precision:** Milliseconds
-- **Threshold:** Alert if >2s
+---
+
+
