@@ -1,4 +1,4 @@
-- Goal: **Measuring the structural complexity of the Search Module to ensure maintainability and identify refacotring needs**
+- Goal: **Measuring the structural complexity of the Search Module to ensure maintainability and identify refactoring needs**
 - Questions
     1. How many decision points (if, loops) are present in the code?
         - in the main code block
