@@ -8,7 +8,21 @@ if (!isset($_SESSION["is_staff"]) || $_SESSION["is_staff"] != 1) {
     exit();
 }
 
-// Include your database connection
+// add test code
+$pass = $fail = 0;
+$logFile = "logs/test_log.csv";
+
+if (file_exists($logFile)) {
+    $log = fopen($logFile, "r");
+    while (($data = fgetcsv($log)) !== FALSE) {
+        if ($data[2] == "pass") $pass++;
+        else if ($data[2] == "fail") $fail++;
+    }
+    fclose($log);
+}
+
+$total = $pass + $fail;
+$pass_rate = $total ? round(($pass / $total) * 100, 2) : 0;
 
 
 // Query to get popular books based on visits
@@ -79,6 +93,13 @@ if (!$trendingResult) {
                 <?php else: ?>
                     <p>No trending books found.</p>
                 <?php endif; ?>
+            </div>
+            <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+                <h3>📊 Custom Test Metrics</h3>
+                <p><strong>Total Tests:</strong> <?= $total ?></p>
+                <p><strong>Pass:</strong> <?= $pass ?></p>
+                <p><strong>Fail:</strong> <?= $fail ?></p>
+                <p><strong>Pass Rate:</strong> <?= $pass_rate ?>%</p>
             </div>
         </section>
     </main>

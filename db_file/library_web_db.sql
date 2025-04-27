@@ -162,30 +162,6 @@ CREATE TABLE `reviews` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_experience`
---
-CREATE TABLE user_experience (
-    user_review TEXT,
-    user_stars INT,
-    username VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
-    FOREIGN KEY (username) REFERENCES users(username)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-SELECT * FROM user_experience;
-
-
-ALTER TABLE user_experience
-ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username);
-
-
---
--- Dumping data for table `reviews`
---
-
 -- --------------------------------------------------------
 
 --
@@ -232,6 +208,31 @@ INSERT INTO `users` (`firstname`, `lastname`, `username`, `email`, `password`, `
 ('Imprisoned', 'matyr', 'A_god', 'imprisoned_matyr@hotmail.com', '$2y$10$BlrrJ82z3oyD6WRC05BYKuX.vYHwNDQDWk0q5HBWt05TTjMug0PSe', 'CMYMCM', 1, 0),
 ('mandre', 'sqmson pol ', 'msp', 'samsonshay@outlook.com', '$2y$10$udv7OYtZBKOgpwLxuwHubumbI1SKQV0C99DmpgK1WRkdrFjeQ2M1G', NULL, 0, 0);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_experience`
+--
+
+CREATE TABLE `user_experience` (
+  `user_review` text DEFAULT NULL,
+  `user_stars` int(11) DEFAULT NULL,
+  `username` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failures`
+--
+
+CREATE TABLE `failures` (
+  `id` int(11) NOT NULL,
+  `event_type` varchar(100) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `occurred_at` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --
@@ -260,7 +261,8 @@ ALTER TABLE `favorite_books`
 -- Indexes for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD KEY `fk_rev` (`book_id`);
+  ADD KEY `fk_rev` (`book_id`),
+  ADD KEY `fk_rev_user` (`username`);
 
 --
 -- Indexes for table `staff`
@@ -272,9 +274,21 @@ ALTER TABLE `staff`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY `username` (`username`),
+  ADD PRIMARY KEY (`username`),
   ADD UNIQUE KEY `email` (`email`),
   ADD KEY `fk_staffid` (`staffid`);
+
+--
+-- Indexes for table `user_experience`
+--
+ALTER TABLE `user_experience`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indexes for table `failures`
+--
+ALTER TABLE `failures`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -291,6 +305,12 @@ ALTER TABLE `books`
 --
 ALTER TABLE `content`
   MODIFY `ChapterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `failures`
+--
+ALTER TABLE `failures`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -313,16 +333,22 @@ ALTER TABLE `favorite_books`
 -- Constraints for table `reviews`
 --
 ALTER TABLE `reviews`
-  ADD CONSTRAINT `fk_rev` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_rev` FOREIGN KEY (`book_id`) REFERENCES `books` (`book_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `fk_rev_user` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `users`
 --
 ALTER TABLE `users`
   ADD CONSTRAINT `fk_staffid` FOREIGN KEY (`staffid`) REFERENCES `staff` (`STAFFID`);
+
+--
+-- Constraints for table `user_experience`
+--
+ALTER TABLE `user_experience`
+  ADD CONSTRAINT `fk_user_exp` FOREIGN KEY (`username`) REFERENCES `users` (`username`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-

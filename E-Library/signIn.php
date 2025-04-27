@@ -79,7 +79,7 @@ $connection->close();
             </div>
             <div class="dropdown">
                 <a href="CreateAccount.php">Standard User</a>
-                <a href="Admincreateaccounts.php">Admin</a>
+                <a href="Admincreateaccount.php">Admin</a>
             </div>
         </div>
     </header>

@@ -1,3 +1,5 @@
+use Library_web_db;
+
 INSERT INTO reviews (username, book_id, review, rating) VALUES
 ('alice11', '417', 'A well-written book.', 4),
 ('alice11', '419', 'I loved the characters in this book.', 1),
