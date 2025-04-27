@@ -47,6 +47,11 @@
     $$
 
 2. **Failure Rate**:
+
+$$
+\text{Failure Rate} = \frac{\text{Critical Failures}}{\text{Total Requests}}
+$$
+
    - Number of critical failures over a week: 2
    - Requests handled in a week: 20,000
 
@@ -63,7 +68,7 @@ $$
    $mtbf = ($failures[2] - $failures[0]) / (count($failures) - 1);
    echo "MTBF: " . round($mtbf / 3600, 2) . " hours";
    ```
-   - Result: Approximately 5 hours
+   - Result: Approximately 5 hours between failures
 
 
 ---
