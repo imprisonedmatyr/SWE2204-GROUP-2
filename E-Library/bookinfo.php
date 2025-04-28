@@ -2,7 +2,8 @@
 session_start();
 
 require 'db_connect.php';
-function logFailure($connection, $eventType, $description) {
+
+function logFailure($database, $eventType, $description) {
     $query = "INSERT INTO failures (event_type, description) VALUES (?, ?)";
     $stmt = $database->prepare($query);
     $stmt->bind_param("ss", $eventType, $description);
@@ -32,7 +33,7 @@ if (isset($_GET['book_id'])) {
     if ($result->num_rows > 0) {
         $book = $result->fetch_assoc();
     } else {
-        logFailure($connection, 'book_not_found', "Book ID $book_id not found.");
+        logfailure($database, 'book_not_found', "Book ID $book_id not found.");
         echo "Book not found.";
         exit;
         
@@ -45,7 +46,7 @@ if (isset($_GET['book_id'])) {
     $stmt->execute();
     $chapterResult = $stmt->get_result();
 } else {
-    logFailure($connection, 'no_book_selected', "User tried to access bookinfo.php without selecting a book.");
+    logfailure($database, 'no_book_selected', "User tried to access bookinfo.php without selecting a book.");
     echo "No book selected.";
     exit;
     
@@ -160,7 +161,7 @@ if (isset($_POST['bookmark'])) {
                         <?php echo $desc; ?>
                     </div>
                 <?php else: ?>
-                    <?php logFailure($connection, 'description_missing', "Missing description file for Book ID $book_id."); ?>
+                    <?php logfailure($database, 'description_missing', "Missing description file for Book ID $book_id."); ?>
                     <p>No description available for this book.</p>
             
                 <?php endif; ?>
@@ -187,7 +188,7 @@ if (isset($_POST['bookmark'])) {
                                     </a>
                                 <?php else: ?>
                                     <?php 
-                                        logFailure($connection, 'chapter_file_missing', "Missing file for Chapter ID {$chapter['ChapterID']} of Book ID $book_id.");
+                                        logfailure($database, 'chapter_file_missing', "Missing file for Chapter ID {$chapter['ChapterID']} of Book ID $book_id.");
                                     ?>
                                     <span>No download available</span>
 
