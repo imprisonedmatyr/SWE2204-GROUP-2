@@ -10,7 +10,7 @@ $allowed_types = ['image/jpg','image/jpeg', 'image/png', 'image/gif'];
 $allowed_summary_types = ['application/pdf', 'text/plain', 'application/epub+zip'];
 
 // Function to fetch all books
-function fetchAllBooks($connection) {
+function fetchAllBooks($database->conn) {
     $stmt = $database->prepare('SELECT * FROM BOOKS ORDER BY book_id DESC');
     if (!$stmt) {
         throw new Exception('Error preparing statement: ' . htmlspecialchars($database->conn->error));
