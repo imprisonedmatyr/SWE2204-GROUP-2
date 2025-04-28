@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (filter_var($userEmail, FILTER_VALIDATE_EMAIL)) {
         // Prepare the SQL statement to find the user
         $title = "SELECT * FROM users WHERE email = ?;";
-        $stmt = $connection->prepare($title);
+        $stmt = $database->prepare($title);
 
         if ($stmt) {
             $stmt->bind_param("s", $userEmail);
@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$connection->close();
+$database->conn->close();
 ?>
 
 <!DOCTYPE html>

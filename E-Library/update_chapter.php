@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     // Prepare update SQL statement
-    $stmt = $connection->prepare("UPDATE CONTENT SET Chapter_title = ?, File_path = ? WHERE chapter_id = ?");
+    $stmt = $database->prepare("UPDATE CONTENT SET Chapter_title = ?, File_path = ? WHERE chapter_id = ?");
     if ($stmt) {
         $stmt->bind_param("ssi", $chapter_title, $file_path, $chapter_id);
 
@@ -42,10 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $stmt->close();
     } else {
-        $_SESSION['error_message'] = "Error preparing statement: " . $connection->error;
+        $_SESSION['error_message'] = "Error preparing statement: " . $database->conn->error;
     }
 
-    $connection->close();
+    $database->conn->close();
     header("Location: managecatalog.php");
     exit;
 }

@@ -15,7 +15,7 @@ if (isset($_GET['chapter_id'])) {
 
     // Fetch the chapter details
     $title = "SELECT * FROM content WHERE ChapterID = $chapter_id";
-    $result = $connection->query($title);
+    $result = $database->query($title);
 
     if ($result && $result->num_rows > 0) {
         $chapter = $result->fetch_assoc();
@@ -23,7 +23,7 @@ if (isset($_GET['chapter_id'])) {
 
         // Fetch the corresponding book details
         $bookQuery = "SELECT * FROM books WHERE book_id = $book_id";
-        $bookResult = $connection->query($bookQuery);
+        $bookResult = $database->query($bookQuery);
 
         if ($bookResult && $bookResult->num_rows > 0) {
             $book = $bookResult->fetch_assoc();
@@ -68,7 +68,7 @@ if (isset($_GET['chapter_id'])) {
 
 // Fetch all chapters for navigation
 $chapterQuery = "SELECT * FROM content WHERE book_id = $book_id ORDER BY Chapter_title";
-$chaptersResult = $connection->query($chapterQuery);
+$chaptersResult = $database->query($chapterQuery);
 ?>
 
 <!DOCTYPE html>

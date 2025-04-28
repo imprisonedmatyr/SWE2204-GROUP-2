@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user_id = intval($data['user_id']);
 
     // Update the user's status to banned
-    $stmt = $connection->prepare("UPDATE users SET is_banned = 1 WHERE user_id = ?");
+    $stmt = $database->prepare("UPDATE users SET is_banned = 1 WHERE user_id = ?");
     $stmt->bind_param("i", $user_id);
 
     if ($stmt->execute()) {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->close();
-    $connection->close();
+    $database->conn->close();
 } else {
     echo json_encode(['message' => 'Invalid request method.']);
 }

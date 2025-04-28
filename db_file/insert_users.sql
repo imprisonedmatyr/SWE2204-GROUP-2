@@ -98,4 +98,4 @@ INSERT INTO users (firstname, lastname, username, email, password) VALUES
 ('Fiona', 'Wilson', 'fiona97', 'fiona97@example.com', '50eb6628725d7169d2c72890b38481a7cd004eaf5f19b19bb703ec81bfafaefb') , -- e9YmSIr9,
 ('Charlie', 'Moore', 'charlie98', 'charlie98@example.com', 'c27b054e2461e73e84e7640cc621a2421a2ccafc9dd93013ca184bdc633bf6f1') , -- kLadjNnJ,
 ('Charlie', 'Moore', 'charlie99', 'charlie99@example.com', 'e4ffd434f773ef6b26b74e4dca68ac1242fc7f7cb50a917be1fcf1b34b56ca5e') , -- oUHttRPo,
-('Edward', 'Taylor', 'edward100', 'edward100@example.com', '26a8f5e891e60646e332d4483e57f10113e130251fb0585ece8fe23194054a50') , -- TCIMZrnp;
+('Edward', 'Taylor', 'edward100', 'edward100@example.com', '26a8f5e891e60646e332d4483e57f10113e130251fb0585ece8fe23194054a50'); -- TCIMZrnp;

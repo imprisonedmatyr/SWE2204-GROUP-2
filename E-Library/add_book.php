@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $status = "Unavailable";
     
     // Begin transaction
-    $connection->begin_transaction();
+    $database->conn->begin_transaction();
     
     try {
         // Handle file uploads...
@@ -70,22 +70,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit;
         }
         // Insert into database...
-        $stmt = $connection->prepare("INSERT INTO books (TITLE, AUTHOR, `BOOK_COVER`, STATUS, CATEGORY, GENRE, `PUBLICATION YEAR`, short_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt = $database->prepare("INSERT INTO books (TITLE, AUTHOR, `BOOK_COVER`, STATUS, CATEGORY, GENRE, `PUBLICATION YEAR`, short_description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
         // Bind parameters...
         $stmt->bind_param("ssssssis", $title, $author, $book_cover_name, $status, $category, $genre, $publication_year, $summary_file_name);
         //execute query
         $stmt->execute();
         
         // Commit transaction
-        $connection->commit();
+        $database->conn->commit();
         $_SESSION['success_message'] = "Book added successfully!";
         
     } catch (Exception $e) {
-        $connection->rollback();
+        $database->conn->rollback();
         $_SESSION['error_message'] = "Error: " . $e->getMessage();
     }
     
-    $connection->close();
+    $database->conn->close();
     header("Location: managecatalog.php");
     exit;
 }

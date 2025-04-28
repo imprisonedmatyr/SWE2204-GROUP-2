@@ -166,23 +166,6 @@ CREATE TABLE `reviews` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user_experience`
---
-CREATE TABLE user_experience (
-    user_review TEXT,
-    user_stars INT,
-    username VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
-    FOREIGN KEY (username) REFERENCES users(username)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-SELECT * FROM user_experience;
-
-
-ALTER TABLE user_experience
-ADD CONSTRAINT fk_username FOREIGN KEY (username) REFERENCES users(username);
-
-
---
 -- Dumping data for table `reviews`
 --
 
@@ -216,7 +199,7 @@ INSERT INTO `staff` (`FIRSTNAME`, `LASTNAME`, `STAFFID`, `EMAIL`, `DEPARTMENT`) 
 CREATE TABLE `users` (
   `firstname` varchar(50) NOT NULL,
   `lastname` varchar(50) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `username` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
   `staffid` varchar(50) DEFAULT NULL,
@@ -231,6 +214,24 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`firstname`, `lastname`, `username`, `email`, `password`, `staffid`, `is_staff`, `is_banned`) VALUES
 ('Imprisoned', 'matyr', 'A_god', 'imprisoned_matyr@hotmail.com', '$2y$10$BlrrJ82z3oyD6WRC05BYKuX.vYHwNDQDWk0q5HBWt05TTjMug0PSe', 'CMYMCM', 1, 0),
 ('mandre', 'sqmson pol ', 'msp', 'samsonshay@outlook.com', '$2y$10$udv7OYtZBKOgpwLxuwHubumbI1SKQV0C99DmpgK1WRkdrFjeQ2M1G', NULL, 0, 0);
+
+--
+-- Table structure for table `user_experience`
+--
+CREATE TABLE user_experience (
+    `user_review` TEXT,
+    `user_stars` INT,
+    `username` VARCHAR(50) COLLATE utf8mb4_general_ci NOT NULL,
+    FOREIGN KEY (`username`) REFERENCES `users`(username)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+
+CREATE TABLE failures (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  event_type VARCHAR(100),
+  description TEXT,
+  occurred_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
 
 --
 -- Indexes for dumped tables
@@ -325,10 +326,3 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-CREATE TABLE failures (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  event_type VARCHAR(100),
-  description TEXT,
-  occurred_at DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-

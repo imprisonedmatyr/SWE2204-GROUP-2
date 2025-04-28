@@ -6,38 +6,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = isset($_POST['title']) ? $_POST['title'] : '';
     $author = isset($_POST['author']) ? $_POST['author'] : '';
     $genre = isset($_POST['genre']) ? $_POST['genre'] : '';
-
     // Build the SQL query for fetching appropriate books from the database
     $sql = "";
     $exe = null;
     $result = null;
-
     // Filter by title
     if (!empty($title) && (empty($author) && empty($genre))) {
         $sql = "SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM BOOKS WHERE TITLE LIKE ?";
-        $exe = $connection->prepare($sql);
+        $exe = $database->prepare($sql);
         $t = '%' . $title . '%';
         $exe->bind_param("s", $t);
         $exe->execute();
         $result = $exe->get_result();
         returnData($result);
     }
-
     // Filter by author
     elseif (!empty($author) && (empty($genre) && empty($title))) {
         $sql = "SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM BOOKS WHERE AUTHOR LIKE ?";
-        $exe = $connection->prepare($sql);
+        $exe = $database->prepare($sql);
         $a = '%' . $author . '%';
         $exe->bind_param("s", $a);
         $exe->execute();
         $result = $exe->get_result();
         returnData($result);
     }
-
     // Filter by category name
     elseif (!empty($genre) && (empty($author) && empty($title))) {
         $sql = "SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM BOOKS WHERE CATEGORY = ?";
-        $exe = $connection->prepare($sql);
+        $exe = $database->prepare($sql);
         $exe->bind_param("s", $genre);
         $exe->execute();
         $result = $exe->get_result();

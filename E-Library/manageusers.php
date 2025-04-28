@@ -37,7 +37,7 @@ require 'db_connect.php';
                     <?php
                     // Fetch users from the database
                     $bool = 0;
-                    $stmt = $connection->prepare('SELECT * FROM USERS where is_staff = ?'); // Assuming there's a 'users' table
+                    $stmt = $database->prepare('SELECT * FROM USERS where is_staff = ?'); // Assuming there's a 'users' table
                     $stmt->bind_param("i", $bool);
                     $stmt->execute();
                     $result = $stmt->get_result();

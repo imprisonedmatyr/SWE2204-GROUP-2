@@ -10,7 +10,7 @@ if (isset($_POST['book_id']) && isset($_SESSION['username'])) {
 
     // Check if the book is already bookmarked
     $checkQuery = "SELECT * FROM favorite_books WHERE book_id = ? AND username = ?";
-    $stmt = $connection->prepare($checkQuery);
+    $stmt = $database->prepare($checkQuery);
     $stmt->bind_param('is', $book_id, $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -18,7 +18,7 @@ if (isset($_POST['book_id']) && isset($_SESSION['username'])) {
     if ($result->num_rows == 0) {
         // Book not yet bookmarked; insert into favorite_books
         $insertQuery = "INSERT INTO favorite_books (book_id, username) VALUES (?, ?)";
-        $stmt = $connection->prepare($insertQuery);
+        $stmt = $database->prepare($insertQuery);
         $stmt->bind_param('is', $book_id, $username);
         if ($stmt->execute()) {
             $response = ['success' => true, 'bookmarked' => true];
@@ -28,7 +28,7 @@ if (isset($_POST['book_id']) && isset($_SESSION['username'])) {
     } else {
         // Book is already bookmarked; remove from favorite_books
         $deleteQuery = "DELETE FROM favorite_books WHERE book_id = ? AND username = ?";
-        $stmt = $connection->prepare($deleteQuery);
+        $stmt = $database->prepare($deleteQuery);
         $stmt->bind_param('is', $book_id, $username);
         if ($stmt->execute()) {
             $response = ['success' => true, 'bookmarked' => false];

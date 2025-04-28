@@ -44,4 +44,3 @@
    	- **Attribute**: Load time
    	- **Scale**: Ratio scale
    	- **Unit**: Seconds
-   

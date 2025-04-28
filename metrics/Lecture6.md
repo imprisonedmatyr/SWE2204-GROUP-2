@@ -24,8 +24,8 @@
 
 ### **The complexity summary for the search module**
 
-| Component         | Cyclomatic Complexity | Max Nesting Depth | Risk Level |
-|-------------------------|----------------|--------------------|-----------------|
-| Main Block    | 2              | Level 1                  | Low               |
-| returnData   | 3              | Level 2                  | Low               |
+| Component    | Cyclomatic Complexity | Max Nesting Depth | Risk Level |
+|--------------|-----------------------|-------------------|------------|
+| Main Block   | 2                     | Level 1           | Low        |
+| returnData   | 3                     | Level 2           | Low        |
 

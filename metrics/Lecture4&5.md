@@ -17,13 +17,13 @@
 
 ### **Function Point Categories and Complexity Weighting**
 
-| Component Type         | Low Complexity | Average Complexity | High Complexity |
-|-------------------------|----------------|--------------------|-----------------|
-| External Inputs (EI)    | 3              | 4                  | 6               |
-| External Outputs (EO)   | 4              | 5                  | 7               |
-| External Inquiries (EQ) | 3              | 4                  | 6               |
-| Internal Logical Files (ILF) | 7         | 10                 | 15              |
-| External Interface Files (EIF) | 5       | 7                  | 10              |
+| Component Type                 | Low Complexity | Average Complexity | High Complexity |
+|--------------------------------|----------------|--------------------|-----------------|
+| External Inputs (EI)           | 3              | 4                  | 6               |
+| External Outputs (EO)          | 4              | 5                  | 7               |
+| External Inquiries (EQ)        | 3              | 4                  | 6               |
+| Internal Logical Files (ILF)   | 7              | 10                 | 15              |
+| External Interface Files (EIF) | 5              | 7                  | 10              |
 
 ---
 

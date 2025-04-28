@@ -11,9 +11,9 @@ $allowed_summary_types = ['application/pdf', 'text/plain', 'application/epub+zip
 
 // Function to fetch all books
 function fetchAllBooks($connection) {
-    $stmt = $connection->prepare('SELECT * FROM BOOKS ORDER BY book_id DESC');
+    $stmt = $database->prepare('SELECT * FROM BOOKS ORDER BY book_id DESC');
     if (!$stmt) {
-        throw new Exception('Error preparing statement: ' . htmlspecialchars($connection->error));
+        throw new Exception('Error preparing statement: ' . htmlspecialchars($database->conn->error));
     }
     $stmt->execute();
     return $stmt->get_result();
@@ -62,9 +62,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // Fetch current book cover from database if no new cover is provided
-        $pst = $connection->prepare("SELECT `BOOK_COVER` FROM BOOKS WHERE book_id = ?");
+        $pst = $database->prepare("SELECT `BOOK_COVER` FROM BOOKS WHERE book_id = ?");
         if (!$pst) {
-            $_SESSION['error_message'] = 'Error preparing statement: ' . htmlspecialchars($connection->error);
+            $_SESSION['error_message'] = 'Error preparing statement: ' . htmlspecialchars($database->conn->error);
             header("Location: managecatalog.php");
             exit;
         }
@@ -101,9 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } else {
         // Fetch current summary from database if no new summary is provided
-        $pst = $connection->prepare("SELECT short_description FROM BOOKS WHERE book_id = ?");
+        $pst = $database->prepare("SELECT short_description FROM BOOKS WHERE book_id = ?");
         if (!$pst) {
-            $_SESSION['error_message'] = 'Error preparing statement: ' . htmlspecialchars($connection->error);
+            $_SESSION['error_message'] = 'Error preparing statement: ' . htmlspecialchars($database->conn->error);
             header("Location: managecatalog.php");
             exit;
         }
@@ -120,10 +120,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prepare the SQL statement for updating the book details
     try {
-        $stmt = $connection->prepare("UPDATE BOOKS SET TITLE = ?, AUTHOR = ?, `BOOK_COVER` = ?, CATEGORY = ?, GENRE = ?, `PUBLICATION YEAR` = ?, short_description = ? WHERE book_id = ?");
+        $stmt = $database->prepare("UPDATE BOOKS SET TITLE = ?, AUTHOR = ?, `BOOK_COVER` = ?, CATEGORY = ?, GENRE = ?, `PUBLICATION YEAR` = ?, short_description = ? WHERE book_id = ?");
         
         if ($stmt === false) {
-            throw new Exception('Error preparing statement: ' . htmlspecialchars($connection->error));
+            throw new Exception('Error preparing statement: ' . htmlspecialchars($database->conn->error));
         }
 
         // Bind parameters and execute the statement
@@ -145,7 +145,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($stmt)) { 
      	$stmt->close(); 
 	}
-	$connection->close();
+	$database->conn->close();
 
 	// Redirect back to manage catalog page
 	header("Location: managecatalog.php");
