@@ -4,7 +4,7 @@ session_start();
 require 'db_connect.php';
 function logFailure($connection, $eventType, $description) {
     $query = "INSERT INTO failures (event_type, description) VALUES (?, ?)";
-    $stmt = $connection->prepare($query);
+    $stmt = $database->prepare($query);
     $stmt->bind_param("ss", $eventType, $description);
     $stmt->execute();
 }
@@ -18,13 +18,13 @@ if (isset($_GET['book_id'])) {
 
     // Increment the visits count for the book
     $updateQuery = "UPDATE BOOKS SET visits = visits + 1 WHERE book_id = ?";
-    $stmt = $connection->prepare($updateQuery);
+    $stmt = $database->prepare($updateQuery);
     $stmt->bind_param('i', $book_id);
     $stmt->execute();
 
     // Fetch the book details
     $title = "SELECT * FROM BOOKS WHERE book_id = ?";
-    $stmt = $connection->prepare($title);
+    $stmt = $database->prepare($title);
     $stmt->bind_param('i', $book_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -40,7 +40,7 @@ if (isset($_GET['book_id'])) {
 
     // Fetch chapter details
     $chapterQuery = "SELECT * FROM content WHERE book_id = ?";
-    $stmt = $connection->prepare($chapterQuery);
+    $stmt = $database->prepare($chapterQuery);
     $stmt->bind_param('i', $book_id);
     $stmt->execute();
     $chapterResult = $stmt->get_result();
@@ -56,7 +56,7 @@ if (isset($_GET['book_id'])) {
 //     $review_content = trim($_POST['review']);
 //     if (!empty($review_content) && isset($_SESSION['username'])) {
 //         $title = 'INSERT INTO REVIEWS (book_id, username, review) VALUES (?, ?, ?)';
-//         $stmt = $connection->prepare($title);
+//         $stmt = $database->prepare($title);
 //         $stmt->bind_param('iss', $book_id, $_SESSION['username'], $review_content);
 //         $stmt->execute();
 //     }
@@ -68,7 +68,7 @@ if (isset($_POST['bookmark'])) {
         $username = $_SESSION['username'];
         // Check if the book is already bookmarked
         $checkQuery = "SELECT * FROM favorite_books WHERE book_id = ? AND username = ?";
-        $stmt = $connection->prepare($checkQuery);
+        $stmt = $database->prepare($checkQuery);
         $stmt->bind_param('is', $book_id, $username);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -76,7 +76,7 @@ if (isset($_POST['bookmark'])) {
         if ($result->num_rows == 0) {
             // Not bookmarked yet, insert
             $title = 'INSERT INTO favorite_books (book_id, username) VALUES (?, ?)';
-            $stmt = $connection->prepare($title);
+            $stmt = $database->prepare($title);
             $stmt->bind_param('is', $book_id, $username);
             $stmt->execute();
             echo json_encode(['success' => true]);
@@ -230,7 +230,7 @@ if (isset($_POST['bookmark'])) {
             
                 <?php
                 $reviewQuery = "SELECT * FROM reviews WHERE book_id = $book_id";
-                $reviewResult = $connection->query($reviewQuery);
+                $reviewResult = $database->query($reviewQuery);
             
                 if ($reviewResult->num_rows > 0) {
                     while ($review = $reviewResult->fetch_assoc()) {
@@ -276,8 +276,8 @@ if (isset($_POST['bookmark'])) {
     <section class="section_related_books">
             <?php
             // Fetch related books based on genre
-            $relatedQuery = "SELECT * FROM books WHERE CATEGORY = '" . $connection->real_escape_string($book['CATEGORY']) . "' AND book_id != $book_id LIMIT 5";
-            $relatedResult = $connection->query($relatedQuery);
+            $relatedQuery = "SELECT * FROM books WHERE CATEGORY = '" . $database->conn->real_escape_string($book['CATEGORY']) . "' AND book_id != $book_id LIMIT 5";
+            $relatedResult = $database->query($relatedQuery);
             ?>
 
             <?php

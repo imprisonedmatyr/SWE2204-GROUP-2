@@ -5,10 +5,10 @@ require 'db_connect.php';
 if (isset($_GET['book_id'])) {
     $book_id = intval($_GET['book_id']);
     // Prepare statement to fetch chapters for the selected book
-    $stmt = $connection->prepare("SELECT chapterid, Chapter_title FROM CONTENT WHERE book_id = ?");
+    $stmt = $database->prepare("SELECT chapterid, Chapter_title FROM CONTENT WHERE book_id = ?");
     if (!$stmt) {
         
-        $_SESSION['error_message'] = 'Error preparing statement: ' . htmlspecialchars($connection->error);
+        $_SESSION['error_message'] = 'Error preparing statement: ' . htmlspecialchars($database->conn->error);
         echo json_encode([]);
         exit;
     }
@@ -35,5 +35,5 @@ if (isset($_GET['book_id'])) {
     $_SESSION['error_message'] = "No book ID provided.";
 }
 
-$connection->close();
+$database->conn->close();
 ?>

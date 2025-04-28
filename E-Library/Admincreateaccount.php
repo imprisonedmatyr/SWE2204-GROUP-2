@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if StaffID is valid
     $checkQuery = "SELECT * FROM Staff WHERE staffid = ?";
-    $stmt = $connection->prepare($checkQuery);
+    $stmt = $database->prepare($checkQuery);
     $stmt->bind_param("s", $staffID);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check for existing email or username
     $checkQuery = "SELECT * FROM USERS WHERE email = ? OR username = ?";
-    $stmt = $connection->prepare($checkQuery);
+    $stmt = $database->prepare($checkQuery);
     $stmt->bind_param("ss", $userEmail, $username);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $hashedPassword = password_hash($password, PASSWORD_BCRYPT);
 
     // Insert new user
-    $stmt = $connection->prepare("INSERT INTO USERS (firstname, lastname, username, email, password, staffid, is_staff) VALUES (?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $database->prepare("INSERT INTO USERS (firstname, lastname, username, email, password, staffid, is_staff) VALUES (?, ?, ?, ?, ?, ?, ?)");
     $stmt->bind_param("ssssssi", $firstName, $lastName, $username, $userEmail, $hashedPassword, $staffID, $is_staff);
 
     if ($stmt->execute()) {
@@ -71,7 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $stmt->close();
-    $connection->close(); // Close connection
+    $database->conn->close(); // Close connection
     exit();
 }
 ?>

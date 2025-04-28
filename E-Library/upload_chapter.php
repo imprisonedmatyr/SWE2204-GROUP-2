@@ -56,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Prepare the SQL statement for inserting chapter details
     try{
-        $stmt = $connection->prepare("INSERT INTO CONTENT (Chapter_title, File_path, book_id) VALUES (?, ?, ?)");
+        $stmt = $database->prepare("INSERT INTO CONTENT (Chapter_title, File_path, book_id) VALUES (?, ?, ?)");
         $stmt->bind_param("ssi", $chapter_title, $file_name, $book_id);
         $stmt->execute();
         
@@ -71,5 +71,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 }
-$connection->close();
+$database->conn->close();
 ?>

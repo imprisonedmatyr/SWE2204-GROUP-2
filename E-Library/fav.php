@@ -10,7 +10,7 @@ if (isset($_SESSION['username']) && isset($_GET['book_id'])) {
     if (isset($_POST['bookmark'])) {
         // Check if the book is already bookmarked
         $title = "SELECT COUNT(*) FROM favorite_books WHERE book_id = ? AND username = ?";
-        if ($stmt = $connection->prepare($title)) {
+        if ($stmt = $database->prepare($title)) {
             $stmt->bind_param('is', $book_id, $username);
             $stmt->execute();
             $stmt->bind_result($count);
@@ -20,7 +20,7 @@ if (isset($_SESSION['username']) && isset($_GET['book_id'])) {
             if ($count > 0) {
                 // Remove the bookmark (unfavorite the book)
                 $deleteQuery = "DELETE FROM favorite_books WHERE book_id = ? AND username = ?";
-                if ($deleteStmt = $connection->prepare($deleteQuery)) {
+                if ($deleteStmt = $database->prepare($deleteQuery)) {
                     $deleteStmt->bind_param('is', $book_id, $username);
                     if ($deleteStmt->execute()) {
                         echo json_encode(['success' => true]);
@@ -32,7 +32,7 @@ if (isset($_SESSION['username']) && isset($_GET['book_id'])) {
             } else {
                 // Add the bookmark (favorite the book)
                 $insertQuery = "INSERT INTO favorite_books (book_id, username) VALUES (?, ?)";
-                if ($insertStmt = $connection->prepare($insertQuery)) {
+                if ($insertStmt = $database->prepare($insertQuery)) {
                     $insertStmt->bind_param('is', $book_id, $username);
                     if ($insertStmt->execute()) {
                         echo json_encode(['success' => true]);

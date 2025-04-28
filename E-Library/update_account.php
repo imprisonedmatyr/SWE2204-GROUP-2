@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $types .= "s";
 
     // Prepare and execute the update query
-    if ($stmt = $connection->prepare($updateQuery)) {
+    if ($stmt = $database->prepare($updateQuery)) {
         $stmt->bind_param($types, ...$params);
         if ($stmt->execute()) {
             $_SESSION['username'] = $username;
@@ -56,5 +56,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-$connection->close();
+$database->conn->close();
 ?>

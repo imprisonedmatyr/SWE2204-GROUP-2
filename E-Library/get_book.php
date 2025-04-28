@@ -2,7 +2,7 @@
 require 'db_connect.php';
 
 $book_id = $_GET['book_id'];
-$stmt = $connection->prepare("SELECT * FROM books WHERE book_id = ?");
+$stmt = $database->prepare("SELECT * FROM books WHERE book_id = ?");
 $stmt->bind_param("s", $book_id);
 $stmt->execute();
 $result = $stmt->get_result();

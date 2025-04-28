@@ -4,26 +4,26 @@ session_start();
 require 'db_connect.php';
 
 // Fetch the latest 10 books
-$stmt = $connection->prepare('SELECT * FROM BOOKS ORDER BY book_id DESC LIMIT 10');
+$stmt = $database->prepare('SELECT * FROM BOOKS ORDER BY book_id DESC LIMIT 10');
 $stmt->execute();
 $result = $stmt->get_result();
 
 // fetch the latest 10 chapters
-$st = $connection->prepare('SELECT * from BOOKS join CONTENT on BOOKS.book_id=CONTENT.book_id order by updated_at desc');
+$st = $database->prepare('SELECT * from BOOKS join CONTENT on BOOKS.book_id=CONTENT.book_id order by updated_at desc');
 $st->execute();
 $result0 = $st->get_result();
 
 // Fetch all books for dropdowns
-$stmt1 = $connection->prepare('SELECT * FROM BOOKS ORDER BY title');
+$stmt1 = $database->prepare('SELECT * FROM BOOKS ORDER BY title');
 $stmt1->execute();
 $result1 = $stmt1->get_result();
 
-$p = $connection->prepare('SELECT Chapter_title from CONTENT where book_id = ?');
+$p = $database->prepare('SELECT Chapter_title from CONTENT where book_id = ?');
 $p->bind_param("s", $book_id);
 $p->execute();
 $p1 = $p->get_result();
 
-$p2 = $connection->prepare("SELECT * FROM BOOKS b join CONTENT c on b.book_id=c.book_id group by b.book_id ORDER BY title");
+$p2 = $database->prepare("SELECT * FROM BOOKS b join CONTENT c on b.book_id=c.book_id group by b.book_id ORDER BY title");
 $p2->execute();
 $p3 = $p2->get_result();
 
@@ -149,7 +149,7 @@ $p3 = $p2->get_result();
                 <select id="book_id_chapter_upload" name="book_id" required>
                     <option value="">--Select a Book--</option>
                     <?php
-                    $pst = $connection->prepare('SELECT * FROM BOOKS ORDER BY title');
+                    $pst = $database->prepare('SELECT * FROM BOOKS ORDER BY title');
                     $pst->execute();
                     $rst = $pst->get_result();
                     ?>
@@ -375,4 +375,4 @@ $p3 = $p2->get_result();
 </body>
 
 </html>
-<?php $connection->close(); ?>
+<?php $database->conn->close(); ?>

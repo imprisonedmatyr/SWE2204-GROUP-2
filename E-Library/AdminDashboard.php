@@ -13,9 +13,9 @@ if (!isset($_SESSION["is_staff"]) || $_SESSION["is_staff"] != 1) {
 
 // Query to get popular books based on visits
 $trendingQuery = "SELECT * FROM BOOKS WHERE visits > 20 order by visits desc LIMIT 5 ";
-$trendingResult = $connection->query($trendingQuery);
+$trendingResult = $database->query($trendingQuery);
 if (!$trendingResult) {
-    die("Query failed: " . $connection->error);
+    die("Query failed: " . $database->conn->error);
 }
 ?>
 

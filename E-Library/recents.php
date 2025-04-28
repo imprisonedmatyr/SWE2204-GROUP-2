@@ -3,7 +3,7 @@ session_start();
 
 require 'db_connect.php';
 
-$st = $connection->prepare('select * from books join content on books.book_id=content.book_id order by updated_at desc');
+$st = $database->prepare('select * from books join content on books.book_id=content.book_id order by updated_at desc');
 $st->execute();
 $result = $st->get_result();
 ?>

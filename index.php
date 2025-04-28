@@ -10,9 +10,9 @@ if (isset($_GET['section']) && isset($_GET['limit']) && isset($_GET['offset'])) 
     $offset = intval($_GET['offset']);
 
     if ($section === 'featured') {
-        $stmt = $connection->prepare("SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM books ORDER BY book_id ASC LIMIT ? OFFSET ?");
+        $stmt = $database->prepare("SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM books ORDER BY book_id ASC LIMIT ? OFFSET ?");
     } elseif ($section === 'most-visited') {
-        $stmt = $connection->prepare("SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM books WHERE visits >= 20 ORDER BY visits DESC LIMIT ? OFFSET ?");
+        $stmt = $database->prepare("SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM books WHERE visits >= 20 ORDER BY visits DESC LIMIT ? OFFSET ?");
     } else {
         echo json_encode([]);
         exit;
@@ -34,11 +34,11 @@ if (isset($_GET['book_id'])) {
 
     // Increment the visits count for the book
     $title = "UPDATE BOOKS SET visits = visits + 1 WHERE book_id = $book_id";
-    $connection->query($title);
+    $database->query($title);
 
     // Fetch the book details
     $title = "SELECT * FROM BOOKS WHERE book_id = $book_id";
-    $result = $connection->query($title);
+    $result = $database->query($title);
 
     if ($result->num_rows > 0) {
         $book = $result->fetch_assoc();
@@ -100,7 +100,7 @@ if (isset($_GET['book_id'])) {
                     <select name="genre" class="select-option">
                         <option value="">Category</option>
                         <?php
-                        $cat = $connection->prepare("SELECT DISTINCT CATEGORY FROM books");
+                        $cat = $database->prepare("SELECT DISTINCT CATEGORY FROM books");
                         $cat->execute();
                         $dog = $cat->get_result();
                         ?>
@@ -126,7 +126,7 @@ if (isset($_GET['book_id'])) {
         <div class="book-list" id="featured-books">
             <?php
             $title = 'SELECT book_id, TITLE, AUTHOR, BOOK_COVER AS IMAGE FROM BOOKS ORDER BY book_id ASC LIMIT 10';
-            $result = $connection->query($title);
+            $result = $database->query($title);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
@@ -153,7 +153,7 @@ if (isset($_GET['book_id'])) {
         <div class="book-list" id="most-visited-books">
             <?php
             $title = 'SELECT book_id, TITLE, AUTHOR, `BOOK_COVER` AS IMAGE FROM BOOKS WHERE visits > 0 ORDER BY visits DESC LIMIT 10';
-            $result = $connection->query($title);
+            $result = $database->query($title);
 
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {

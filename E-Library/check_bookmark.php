@@ -9,7 +9,7 @@ if (isset($_GET['book_id']) && isset($_SESSION['username'])) {
     $username = $_SESSION['username'];
 
     $checkQuery = "SELECT * FROM favorite_books WHERE book_id = ? AND username = ?";
-    $stmt = $connection->prepare($checkQuery);
+    $stmt = $database->prepare($checkQuery);
     $stmt->bind_param('is', $book_id, $username);
     $stmt->execute();
     $result = $stmt->get_result();

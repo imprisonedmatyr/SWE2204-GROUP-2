@@ -15,7 +15,7 @@ $username = $_SESSION['username'];
 // Fetch user's favorite books from the database
 $titleQuery = "SELECT favorite_books.book_id, TITLE, AUTHOR, BOOK_COVER FROM favorite_books 
                JOIN books ON books.book_id = favorite_books.book_id WHERE favorite_books.username = ?";
-$stmt = $connection->prepare($titleQuery);
+$stmt = $database->prepare($titleQuery);
 $stmt->bind_param("s", $username);
 $stmt->execute();
 $result = $stmt->get_result();
@@ -52,7 +52,7 @@ while ($row = $result->fetch_assoc()) {
                     $book_id = $book['book_id'];
                     $image = $book['BOOK_COVER'];
 
-                    $count = $connection->prepare("SELECT count(Chapter_title) as TOTAL_CHAPTERS from content WHERE book_id = ?");
+                    $count = $database->prepare("SELECT count(Chapter_title) as TOTAL_CHAPTERS from content WHERE book_id = ?");
                     $count->bind_param('i', $book_id);
                     $count->execute();
                     $count1 = $count->get_result();

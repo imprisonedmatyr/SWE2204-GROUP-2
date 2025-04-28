@@ -32,7 +32,7 @@ require 'db_connect.php';
                     <select name="genre">
                         <option value="">Category</option>
                         <?php
-                        $cat = $connection->prepare("SELECT DISTINCT CATEGORY FROM books");
+                        $cat = $database->prepare("SELECT DISTINCT CATEGORY FROM books");
                         $cat->execute();
                         $dog = $cat->get_result();
                         ?>
