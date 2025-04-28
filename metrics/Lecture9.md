@@ -19,16 +19,6 @@
 
 ---
 
-### **Reliability Metric Categories and Weighting**
-
-| Metric Category        | Monitoring Tool | Target Threshold | Measurement Frequency |
-|-------------------------|-----------------|------------------|------------------------|
-| Uptime Percentage       | Cron job + log.txt | ≥99.9%          | Every minute           |
-| Mean Time Between Failures (MTBF) | PHP script analyzing `failures` table | Increase over time  | Daily |
-| Mean Time to Recovery (MTTR) | Manual and automatic recovery logs | <10 minutes | After each failure |
-| Failure Rate            | Error logger + `failures` DB | As low as possible | Weekly review |
-
----
 
 ## **Step 1: Metric Collection and Calculation**
 
@@ -86,4 +76,14 @@ echo "Predicted reliability: " . round($reliability, 4);
 
 ---
 
+### **Reliability Metric Categories and Weighting**
+
+| Metric Category        | Monitoring Tool | Target Threshold | Measurement Frequency |
+|-------------------------|-----------------|------------------|------------------------|
+| Uptime Percentage       | Cron job + log.txt | ≥99.9%          | Every minute           |
+| Mean Time Between Failures (MTBF) | PHP script analyzing `failures` table | Increase over time  | Daily |
+| Mean Time to Recovery (MTTR) | Manual and automatic recovery logs | <10 minutes | After each failure |
+| Failure Rate            | Error logger + `failures` DB | As low as possible | Weekly review |
+
+---
 
